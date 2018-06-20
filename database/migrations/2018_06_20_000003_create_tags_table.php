@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateTagsTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'users';
+    public $set_schema_table = 'tags';
 
     /**
      * Run the migrations.
-     * @table users
+     * @table tags
      *
      * @return void
      */
@@ -24,21 +24,14 @@ class CreateUsersTable extends Migration
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->string('slug', 45);
             $table->string('name', 45);
-            $table->string('mail', 45);
-            $table->string('password', 25);
-            $table->string('job', 45)->nullable();
-            $table->integer('roles_id');
 
-            $table->index(["roles_id"], 'fk_users_roles_idx');
+            $table->unique(["slug"], 'slug_UNIQUE');
+
+            $table->unique(["name"], 'name_UNIQUE');
             $table->softDeletes();
             $table->nullableTimestamps();
-
-
-            $table->foreign('roles_id', 'fk_users_roles_idx')
-                ->references('id')->on('roles')
-                ->onDelete('no action')
-                ->onUpdate('no action');
         });
     }
 

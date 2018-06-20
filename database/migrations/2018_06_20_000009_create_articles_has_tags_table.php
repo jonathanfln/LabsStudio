@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateArticlesHasTagsTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'users';
+    public $set_schema_table = 'articles_has_tags';
 
     /**
      * Run the migrations.
-     * @table users
+     * @table articles_has_tags
      *
      * @return void
      */
@@ -24,19 +24,21 @@ class CreateUsersTable extends Migration
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('name', 45);
-            $table->string('mail', 45);
-            $table->string('password', 25);
-            $table->string('job', 45)->nullable();
-            $table->integer('roles_id');
+            $table->unsignedInteger('articles_id');
+            $table->unsignedInteger('tags_id');
 
-            $table->index(["roles_id"], 'fk_users_roles_idx');
-            $table->softDeletes();
-            $table->nullableTimestamps();
+            $table->index(["articles_id"], 'fk_articles_has_tags_articles1_idx');
+
+            $table->index(["tags_id"], 'fk_articles_has_tags_tags1_idx');
 
 
-            $table->foreign('roles_id', 'fk_users_roles_idx')
-                ->references('id')->on('roles')
+            $table->foreign('articles_id', 'fk_articles_has_tags_articles1_idx')
+                ->references('id')->on('articles')
+                ->onDelete('no action')
+                ->onUpdate('no action');
+
+            $table->foreign('tags_id', 'fk_articles_has_tags_tags1_idx')
+                ->references('id')->on('tags')
                 ->onDelete('no action')
                 ->onUpdate('no action');
         });
