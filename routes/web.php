@@ -12,8 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('home');
-})->name('home');
+    return view('welcome');
+})->name('welcome');
 
 Route::get('/services', function () {
     return view('services');
@@ -28,3 +28,7 @@ Route::get('/contact', function () {
 })->name('contact');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

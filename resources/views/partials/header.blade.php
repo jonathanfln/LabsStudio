@@ -11,7 +11,7 @@
 		<nav>
 			<ul class="menu-list">
 				<li class="">
-					<a href="{{route('home')}}">Home</a>
+					<a href="{{route('welcome')}}">Home</a>
 				</li>
 				<li>
 					<a href="{{route('services')}}">Services</a>
