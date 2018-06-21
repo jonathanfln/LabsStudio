@@ -114,12 +114,37 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-        [
+        /* [
             'text'        => 'Pages',
             'url'         => 'admin/pages',
             'icon'        => 'file',
             'label'       => 4,
             'label_color' => 'success',
+        ], */
+        [
+            'text'        => 'Carousel',
+            'url'         => 'admin/carousel',
+            'icon'        => 'image',
+        ],
+        [
+            'text'        => 'Services',
+            'url'         => 'admin/services',
+            'icon'        => 'file',
+        ],
+        [
+            'text'        => 'Testimonials',
+            'url'         => 'admin/testimonials',
+            'icon'        => 'file',
+        ],
+        [
+            'text'        => 'Projets',
+            'url'         => 'admin/projets',
+            'icon'        => 'file',
+        ],
+        [
+            'text'        => 'Users',
+            'url'         => 'admin/users',
+            'icon'        => 'user',
         ],
         'ACCOUNT SETTINGS',
         [

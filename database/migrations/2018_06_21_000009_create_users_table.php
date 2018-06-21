@@ -25,10 +25,10 @@ class CreateUsersTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name', 45);
-            $table->string('mail', 45);
-            $table->string('password', 25);
+            $table->string('email', 45);
+            $table->string('password', 255);
             $table->string('job', 45)->nullable();
-            $table->integer('roles_id');
+            $table->unsignedInteger('roles_id');
 
             $table->index(["roles_id"], 'fk_users_roles_idx');
             $table->softDeletes();
