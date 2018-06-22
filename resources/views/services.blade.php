@@ -150,8 +150,8 @@
 </div>
 <!-- services card section end-->
 
-@include('partials.newsletter')
+@include('components.newsletter')
 
-@include('partials.contact')
+@include('components.contact')
 
 @endsection

@@ -269,6 +269,6 @@
 </div>
 <!-- Promotion section end-->
 
-@include('partials.contact')
+@include('components.contact')
 
 @endsection

@@ -26,9 +26,10 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name', 45);
             $table->string('email', 45);
-            $table->string('password', 255);
+            $table->string('password');
             $table->string('job', 45)->nullable();
             $table->unsignedInteger('roles_id');
+            $table->rememberToken();
 
             $table->index(["roles_id"], 'fk_users_roles_idx');
             $table->softDeletes();

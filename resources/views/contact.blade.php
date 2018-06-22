@@ -20,6 +20,6 @@
 <!-- Google map -->
 <div class="map" id="map-area"></div>
 
-@include('partials.contact')
+@include('components.contact')
 
 @endsection

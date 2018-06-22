@@ -29,13 +29,13 @@ welcome
 </head>
 <body>
 	
-	@include('partials.preload')
+	@include('components.preload')
 
-	@include('partials.header')
+	@include('components.header')
 
 	@yield('body')
 
-	@include('partials.footer')
+	@include('components.footer')
 
 	<!--====== Javascripts & Jquery ======-->
 	<script src="{{asset('theme/js/jquery-2.1.4.min.js')}}"></script>
