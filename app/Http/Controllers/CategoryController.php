@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Http\Requests\StoreCatCreate;
+use App\Http\Requests\StoreCatEdit;
 
 class CategoryController extends Controller
 {
@@ -34,7 +36,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCatCreate $request)
     {
         $category = new Category;
         $category->name = $request->name;
@@ -72,7 +74,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreCatEdit $request, $id)
     {
         $categorie= Category::find($id);
         $categorie->name = $request->name;
