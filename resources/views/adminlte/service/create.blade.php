@@ -12,21 +12,21 @@
 			@csrf
 			<div class="box-body">
         <div class="form-group">
-          <label for="icon"><h3>Icon du service</h3></label>
+          <label for="icon"><h3>Icon</h3></label>
           @if($errors->has('image'))
             <div class="text-danger">{{$errors->first('image')}}</>
           @endif
-          <input type="text" class="form-control w-50" name="image" id="icon" placeholder="Veuillez ajouter une icon pour le service avec flaticon" value="{{old('image')}}">
+          <input type="text" class="form-control w-50 {{$errors->has('image')?'border-danger':''}}" name="image" id="icon" placeholder="Veuillez ajouter une icon pour le service avec flaticon" value="{{old('image')}}">
         </div>
 				<div class="form-group">
-          <label for="name"><h3>Nom du service</h3></label>
+          <label for="name"><h3>Nom</h3></label>
           @if($errors->has('name'))
             <div class="text-danger">{{$errors->first('name')}}</>
           @endif
 					<input type="text" name="name" id="name" class="form-control w-50 {{$errors->has('name')?'border-danger':''}}" placeholder="Veuillez entrer un nom pour le service" value="{{old('name')}}">
         </div>
         <div class="form-group">
-          <label for="content"><h3>Description du service</h3></label>
+          <label for="content"><h3>Description</h3></label>
           @if($errors->has('content'))
             <div class="text-danger">{{$errors->first('content')}}</>
           @endif
@@ -35,7 +35,7 @@
       </div>
 			<div class="box-body">
 				<button type="submit" class="btn btn-info">Enregistrer</button>
-				<a href="{{route('categories.index')}}" class="btn btn-danger">Retour</a>
+				<a href="{{route('services.index')}}" class="btn btn-danger">Retour</a>
 			</div>
 		</form>
 	</div>

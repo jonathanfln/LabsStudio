@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Service;
+use App\Http\Requests\StoreServCreate;
+use App\Http\Requests\StoreServEdit;
 
 class ServiceController extends Controller
 {
@@ -34,7 +36,7 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreServCreate $request)
     {
         $service = new Service;
         $service->name = $request->name;
@@ -74,7 +76,7 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $service)
+    public function update(StoreServEdit $request, Service $service)
     {
         $service->name = $request->name;
         $service->content = $request->content;

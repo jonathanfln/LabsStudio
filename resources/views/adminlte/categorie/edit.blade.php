@@ -3,7 +3,7 @@
 @section('title', 'AdminLTE')
 
 @section('content_header')
-    <h1>Éditer </h1>
+    <h1>Éditer la catégorie {{$categorie->name}}</h1>
 @stop
 
 @section('content')
@@ -13,7 +13,7 @@
             @method('PUT')
 			<div class="box-body">
 				<div class="form-group">
-					<label for="name"><h3>Nom de la catégorie</h3></label>
+					<label for="name"><h3>Nom</h3></label>
 					@if($errors->has('name'))
             			<div class="text-danger">{{$errors->first('name')}}</>
           			@endif
