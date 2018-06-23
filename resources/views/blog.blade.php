@@ -190,15 +190,6 @@
 							Donec fermen tum convallis ante eget tristique. Sed lacinia turpis at ultricies vestibulum.</p>
 					</div>
 				</div>
-				<!-- Single widget -->
-				<div class="widget-item">
-					<h2 class="widget-title">Add</h2>
-					<div class="add">
-						<a href="">
-							<img src="{{asset('theme/img/add.jpg')}}" alt="">
-						</a>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>

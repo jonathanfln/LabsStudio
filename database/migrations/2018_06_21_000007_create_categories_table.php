@@ -24,10 +24,7 @@ class CreateCategoriesTable extends Migration
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('slug', 45);
             $table->string('name', 45);
-
-            $table->unique(["slug"], 'slug_UNIQUE');
 
             $table->unique(["name"], 'name_UNIQUE');
             $table->softDeletes();
