@@ -25,8 +25,6 @@ class CreateCategoriesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name', 45);
-
-            $table->unique(["name"], 'name_UNIQUE');
             $table->softDeletes();
             $table->nullableTimestamps();
         });

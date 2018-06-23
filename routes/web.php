@@ -36,3 +36,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/admin/carousel', 'ImgCarouselController');
 
 Route::resource('/admin/categories', 'CategoryController');
+
+Route::resource('/admin/services', 'ServiceController');
