@@ -38,3 +38,5 @@ Route::resource('/admin/carousel', 'ImgCarouselController');
 Route::resource('/admin/categories', 'CategoryController');
 
 Route::resource('/admin/services', 'ServiceController');
+
+Route::resource('/admin/clients', 'ClientController');

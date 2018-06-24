@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'AdminLTE')
+@section('title', 'Catégorie')
 
 @section('content_header')
     <h1>Éditer la catégorie {{$categorie->name}}</h1>

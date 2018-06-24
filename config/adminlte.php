@@ -132,6 +132,11 @@ return [
             'icon'        => 'file',
         ],
         [
+            'text'        => 'Clients',
+            'url'         => 'admin/clients',
+            'icon'        => 'file',
+        ],
+        [
             'text'        => 'Catégories',
             'url'         => 'admin/categories',
             'icon'        => 'file',

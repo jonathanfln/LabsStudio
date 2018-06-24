@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', "Ajout d'une image")
+@section('title', "Carousel")
 
 @section('content_header')
     <h1>Ajout d'une nouvelle image au carousel</h1>
