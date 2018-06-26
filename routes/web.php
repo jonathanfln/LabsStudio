@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', 'FrontController@welcome')->name('welcome');
+Route::get('/services', 'FrontController@services')->name('services');
+Route::get('/blog', 'FrontController@blog')->name('blog');
+Route::get('/contact', 'FrontController@contact')->name('contact');
+Route::get('/login', 'FrontController@login')->name('login');
 
 Route::get('/services', function () {
     return view('services');
