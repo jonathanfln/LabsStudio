@@ -24,7 +24,7 @@
         <div class="text-danger">{{$errors->first('content')}}</div>
       @endif
       <div>
-        <textarea name="content" id="content" class="w-75" placeholder="Description du projet">{{old('content', $projet->content)}}</textarea>
+        <textarea name="content" id="content" class="w-75 {{$errors->has('content')?'border-danger':''}}" placeholder="Description du projet">{{old('content', $projet->content)}}</textarea>
       </div>
     </div>
     <div class="box-body">

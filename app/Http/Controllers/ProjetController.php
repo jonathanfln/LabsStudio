@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Projet;
 use Storage;
+use App\Http\Requests\StoreProjCreate;
+use App\Http\Requests\StoreProjEdit;
 
 class ProjetController extends Controller
 {
@@ -35,7 +37,7 @@ class ProjetController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProjCreate $request)
     {
         $projet = new Projet;
         $projet->name = $request->name;
@@ -75,12 +77,16 @@ class ProjetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Projet $projet)
+    public function update(StoreProjEdit $request, Projet $projet)
     {
         $projet->name = $request->name;
         $projet->content = $request->content;
         if($request->image != NULL)
         {
+            if(Storage::disk('imgProjet')->exists($projet->image))
+            {
+                Storage::disk('imgProjet')->delete($projet->image);
+            }
             $projet->name = $request->image->store('','imgProjet');
         }
         $projet->save();

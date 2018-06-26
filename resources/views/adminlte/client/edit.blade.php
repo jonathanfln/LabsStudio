@@ -20,10 +20,10 @@
     </div>
     <div class="box-body">
       <label for="company"><h2>Société</h2></label>
-      @if($errors->has('company'))
-        <div class="text-danger">{{$errors->first('company')}}</div>
+      @if($errors->has('content'))
+        <div class="text-danger">{{$errors->first('content')}}</div>
       @endif
-      <input type="text" name="company" id="company" class="form-control w-75 {{$errors->has('company')?'border-danger':''}}" placeholder="Nom de la société" value="{{old('company', $client->company)}}">
+      <input type="text" name="company" id="company" class="form-control w-75 {{$errors->has('content')?'border-danger':''}}" placeholder="Nom de la société" value="{{old('company', $client->company)}}">
     </div>
     <div class="box-body">
       <div class="form-group">

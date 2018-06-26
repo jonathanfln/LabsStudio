@@ -18,12 +18,12 @@
       <input type="text" name="name" id="name" class="form-control w-75 {{$errors->has('name')?'border-danger':''}}" placeholder="Nom du client" value="{{old('name')}}">
     </div>
     <div class="box-body">
-      <label for="company"><h2>Description</h2></label>
+      <label for="content"><h2>Description</h2></label>
       @if($errors->has('content'))
         <div class="text-danger">{{$errors->first('content')}}</div>
       @endif
       <div>
-        <textarea name="content" id="content" class="w-75" placeholder="Description du projet">{{old('names')}}</textarea>
+        <textarea name="content" id="content" class="w-75 {{$errors->has('content')?'border-danger':''}}" placeholder="Description du projet">{{old('content')}}</textarea>
       </div>
     </div>
     <div class="box-body">
