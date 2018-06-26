@@ -17,7 +17,7 @@ class ImgCarouselController extends Controller
      */
     public function index()
     {
-        $carousels=ImgCarousel::all();
+        $carousels=ImgCarousel::all()->sortByDesc('created_at');
         return view('adminlte.carousel.index', compact('carousels'));
     }
 

@@ -17,7 +17,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::all();
+        $clients = Client::all()->sortByDesc('created_at');
         return view('adminlte.client.index',compact('clients'));
     }
 

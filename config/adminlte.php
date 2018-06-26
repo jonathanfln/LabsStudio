@@ -109,11 +109,11 @@ return [
 
     'menu' => [
         'MAIN NAVIGATION',
-        [
+        /* [
             'text' => 'Blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
-        ],
+        ], */
         /* [
             'text'        => 'Pages',
             'url'         => 'admin/pages',
@@ -155,6 +155,11 @@ return [
             'text'        => 'Users',
             'url'         => 'admin/users',
             'icon'        => 'user',
+        ],
+        [
+            'text'        => 'Tags',
+            'url'         => 'admin/tags',
+            'icon'        => 'tag',
         ],
         'ACCOUNT SETTINGS',
         [
