@@ -134,7 +134,7 @@ return [
         [
             'text'        => 'Clients',
             'url'         => 'admin/clients',
-            'icon'        => 'file',
+            'icon'        => 'users',
         ],
         [
             'text'        => 'Catégories',

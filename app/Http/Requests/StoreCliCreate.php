@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreServEdit extends FormRequest
+class StoreCliCreate extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,9 @@ class StoreServEdit extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'required',
             'name' => 'required|max:45',
-            'content' => 'required|max:255'
+            'company' => 'required|max:45',
+            'image' => 'required|max:20000000'
         ];
     }
 
@@ -38,11 +38,12 @@ class StoreServEdit extends FormRequest
     public function messages()
     {
         return [
-            'image.required' => "Il faut impérativement une icone",
-            'name.required' => "Il faut impérativement un nom pour le service",
+            'name.required' => "Il faut impérativement un nom pour le client",
+            'company.required' => "Il faut impérativement un nom de société",
             'name.max' => 'Maximum :max caractères',
-            'content.required' => "Il faut impérativement une description pour le service",
-            'content.max' => 'Maximum :max caractères',
+            'company.max' => 'Maximum :max caractères',
+            'image.required' => "Il faut impérativement une photo du client",
+            'image.max' => 'Maximum :max caractères',
         ];
     }
 }

@@ -41,8 +41,8 @@ class StoreServCreate extends FormRequest
             'image.required' => "Il faut impérativement une icone",
             'name.required' => "Il faut impérativement un nom pour le service",
             'name.max' => 'Maximum :max caractères',
-            'name.required' => "Il faut impérativement une description pour le service",
-            'name.max' => 'Maximum :max caractères',
+            'content.required' => "Il faut impérativement une description pour le service",
+            'content.max' => 'Maximum :max caractères',
         ];
     }
 }
