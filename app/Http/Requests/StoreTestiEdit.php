@@ -37,9 +37,9 @@ class StoreTestiEdit extends FormRequest
     public function messages()
     {
         return [
-            'image.required' => "Il faut impérativement un avis",
-            'name.max' => 'Maximum :max caractères',
-            'clients_id.required' => 'Il faut impérativement un client',
+            'content.required' => "Il faut impérativement un avis",
+            'content.max' => 'Maximum :max caractères',
+            'clients_id.required' => "Ce n'est pas bien d'essayer de tricher",
             'clients_id.integer' => "Ce n'est pas bien d'essayer de tricher",
             'clients_id.exists' => "Ce n'est pas bien d'essayer de tricher",
         ];
