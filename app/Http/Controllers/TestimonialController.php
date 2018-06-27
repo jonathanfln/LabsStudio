@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTestiCreate;
+use App\Http\Requests\StoreTestiEdit;
 use Illuminate\Http\Request;
 use App\Testimonial;
 use App\Client;
@@ -37,7 +39,7 @@ class TestimonialController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTestiCreate $request)
     {
         $testi = new Testimonial;
         $testi->content = $request->content;
@@ -77,7 +79,7 @@ class TestimonialController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Testimonial $testimonial)
+    public function update(StoreTestiEdit $request, Testimonial $testimonial)
     {
         $testimonial->content = $request->content;
         $testimonial->clients_id = $request->clients_id;

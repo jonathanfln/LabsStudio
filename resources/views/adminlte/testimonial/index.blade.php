@@ -13,17 +13,17 @@
 <hr>
 <div class="row">
   @foreach($testimonials as $testimonial)
-  <a href="{{route('testimonials.show', ['testimonial'=>$testimonial->id])}}">
   <div class="col-md-3 mb-5 ">
-    <div class="card mx-auto" style="width: 18rem;">
-      <div class="card-body text-center">
-        <p>{{$testimonial->content}}</p>
-        <img src="{{Storage::disk('imgClient')->url($testimonial->client->image)}}" alt="{{$testimonial->client->name}}" class="img-fluid">
-        <h4 class="mt-2">{{$testimonial->client->name}}</h4>
-        <hr>
-        <a href="{{route('testimonials.show', ['testimonial'=>$testimonial->id])}}" class="btn btn-info text-white">Voir</a>
+    <a href="{{route('testimonials.show', ['testimonial'=>$testimonial->id])}}" class="text-dark">
+      <div class="card mx-auto" style="width: 18rem;">
+        <div class="card-body text-center">
+          <p>{{$testimonial->content}}</p>
+          <hr>
+          <img src="{{Storage::disk('imgClient')->url($testimonial->client->image)}}" alt="{{$testimonial->client->name}}" class="img-fluid">
+          <h4 class="mt-2 d-inline-block">{{$testimonial->client->name}}</h4>
+        </div>
       </div>
-    </div>
+    </a>
   </div>
   @endforeach
 </div>

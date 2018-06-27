@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', "Clients")
+@section('title', "Testimonials")
 
 @section('content_header')
     <h1>Ajout d'un nouveau testimonial</h1>
@@ -22,6 +22,9 @@
     <div class="box-body">
       <div class="form-group w-25">
         <label for="client_id"><h3>Client</h3></label>
+        @if($errors->has('clients_id'))
+          <div class="text-danger">{{$errors->first('clients_id')}}</div>
+        @endif
         <select class="form-control" name="clients_id" id="client_id" class="w-25">
           @foreach($clients as $client)
             <option class="" {{old('clients_id')}} value="{{$client->id}}">{{$client->name}}</option>
