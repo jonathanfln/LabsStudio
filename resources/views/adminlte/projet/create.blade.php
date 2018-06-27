@@ -15,7 +15,7 @@
       @if($errors->has('name'))
         <div class="text-danger">{{$errors->first('name')}}</div>
       @endif
-      <input type="text" name="name" id="name" class="form-control w-75 {{$errors->has('name')?'border-danger':''}}" placeholder="Nom du client" value="{{old('name')}}">
+      <input type="text" name="name" id="name" class="form-control w-75 {{$errors->has('name')?'border-danger':''}}" placeholder="Veuillez entrer le nom de projet" value="{{old('name')}}">
     </div>
     <div class="box-body">
       <label for="content"><h2>Description</h2></label>

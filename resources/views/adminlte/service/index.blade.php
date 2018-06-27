@@ -13,20 +13,20 @@
 <hr>
 <table class="table table-light w-75">
   <thead>
-    <tr>
-      <th >#</th>
-      <th >Nom</th>
-      <th >Description</th>
-      <th >Action</th>
+    <tr class="row mx-0">
+      <th class="col-md-1">#</th>
+      <th class="col-md-3">Nom</th>
+      <th class="col-md-7">Description</th>
+      <th class="col-md-1">Action</th>
     </tr>
   </thead>
   <tbody>
     @foreach($services as $service)
-      <tr>
-        <td scope="row">{{$loop->iteration}}</td>
-        <td>{{$service->name}}</td>
-        <td>{{$service->content}}</td>
-        <td>
+      <tr class="row mx-0">
+        <td scope="row" class="col-md-1">{{$loop->iteration}}</td>
+        <td class="col-md-3">{{$service->name}}</td>
+        <td class="col-md-7">{{$service->content}}</td>
+        <td class="col-md-1">
           <a href="{{route('services.show',['service'=>$service->id])}}" class="btn btn-warning">Voir</a>
         </td>
       </tr>
