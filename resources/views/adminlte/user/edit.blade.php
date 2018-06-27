@@ -32,7 +32,7 @@
             @if($errors->has('image'))
               <div class="text-danger">{{$errors->first('image')}}</div>
             @endif
-          <input type="file" class="form-control-file" name="image" id="image">
+          <input type="file" class="form-control-file " name="image" id="image">
         </div>
       </div>
       {{-- Fin photo --}}
@@ -44,7 +44,10 @@
       <div class="col-md-6">
         <div class="form-group w-75">
           <label for="email"><h3>Adresse email</h3></label>
-          <input type="email" class="form-control" name="email" id="email" placeholder="adresse@email.com" value="{{old('email', $user->email)}}">
+          @if($errors->has('email'))
+            <div class="text-danger">{{$errors->first('email')}}</div>
+          @endif
+          <input type="email" class="form-control {{$errors->has('email')?'border-danger':''}}" name="email" id="email" placeholder="adresse@email.com" value="{{old('email', $user->email)}}">
         </div>
       </div>
       {{-- Fin mail --}}
@@ -76,8 +79,8 @@
           @if($errors->has('password'))
             <div class="text-danger">{{$errors->first('password')}}</div>
           @endif
-          <input type="password" class="form-control w-75" name="password" id="" placeholder="Veuillez entrer un mot de passe">
-          <input type="password" class="form-control w-75" name="password_confirmation" id="" placeholder="Veuillez retaper votre mot de passe">
+          <input type="password" class="form-control w-75 mb-1 {{$errors->has('password')?'border-danger':''}}" name="password" id="" placeholder="Veuillez entrer un mot de passe">
+          <input type="password" class="form-control w-75 {{$errors->has('password')?'border-danger':''}}" name="password_confirmation" id="" placeholder="Veuillez retaper votre mot de passe">
         </div>
       </div>
       {{-- Fin mot de passe --}}
@@ -86,7 +89,10 @@
       <div class="col-md-6">
         <div class="form-group w-75">
           <label for="post"><h3>Poste</h3></label>
-          <input type="text" name="job" id="post" class="form-control" placeholder="Poste de la personne" value="{{old('job', $user->job)}}">
+          @if($errors->has('job'))
+            <div class="text-danger">{{$errors->first('job')}}</div>
+          @endif
+          <input type="text" name="job" id="post" class="form-control {{$errors->has('job')?'border-danger':''}}" placeholder="Poste de la personne" value="{{old('job', $user->job)}}">
         </div>
       </div>
       {{-- Fin poste --}}

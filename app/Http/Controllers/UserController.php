@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Role;
 use Storage;
+use App\Http\Requests\StoreUserCreate;
+use App\Http\Requests\StoreUserEdit;
 
 class UserController extends Controller
 {
@@ -37,7 +39,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserCreate $request)
     {
         $user = new User;
         $user->name = $request->name;
@@ -89,7 +91,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(StoreUserEdit $request, User $user)
     {
         $user->name = $request->name;
         if($request->image != NULL)
@@ -100,7 +102,10 @@ class UserController extends Controller
             }
             $user->image = $request->image->store('', 'imgUser');
         }
-        $user->email = $request->email;
+        if($request->email != $user->email)
+        {
+            $user->email = $request->email;
+        }
         $user->roles_id = $request->roles_id;
         if($request->password != NULL)
         {
