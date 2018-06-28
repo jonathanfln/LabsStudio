@@ -11,8 +11,9 @@
 	</div>
 	<!-- slider -->
 	<div id="hero-slider" class="owl-carousel">
-		<div class="item  hero-item" data-bg="{{asset('theme/img/01.jpg')}}"></div>
-		<div class="item  hero-item" data-bg="{{asset('theme/img/02.jpg')}}"></div>
+		@foreach($carouselImgs as $img)
+			<div class="item  hero-item" data-bg="{{Storage::disk('imgCarousel')->url($img->image)}}"></div>
+		@endforeach
 	</div>
 </div>
 <!-- Intro Section -->
@@ -26,38 +27,19 @@
 		<div class="container">
 			<div class="row">
 				<!-- single card -->
+				@foreach($services as $service)
 				<div class="col-md-4 col-sm-6">
 					<div class="lab-card">
 						<div class="icon">
-							<i class="flaticon-023-flask"></i>
+							<i class="{{$service->image}}"></i>
 						</div>
-						<h2>Get in the lab</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..
+						<h2>{{$service->name}}</h2>
+						<p>
+							{{$service->content}}
 						</p>
 					</div>
 				</div>
-				<!-- single card -->
-				<div class="col-md-4 col-sm-6">
-					<div class="lab-card">
-						<div class="icon">
-							<i class="flaticon-011-compass"></i>
-						</div>
-						<h2>Projects online</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..
-						</p>
-					</div>
-				</div>
-				<!-- single card -->
-				<div class="col-md-4 col-sm-12">
-					<div class="lab-card">
-						<div class="icon">
-							<i class="flaticon-037-idea"></i>
-						</div>
-						<h2>SMART MARKETING</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla..
-						</p>
-					</div>
-				</div>
+				@endforeach
 			</div>
 		</div>
 	</div>

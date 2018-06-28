@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Service;
+use App\Icon;
 use App\Http\Requests\StoreServCreate;
 use App\Http\Requests\StoreServEdit;
 
@@ -27,7 +28,8 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('adminlte.service.create');
+        $icons = Icon::paginate(10);
+        return view('adminlte.service.create', compact('icons'));
     }
 
     /**
@@ -66,7 +68,8 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        return view('adminlte.service.edit',compact('service'));
+        $icons = Icon::paginate(10);
+        return view('adminlte.service.edit',compact('service','icons'));
     }
 
     /**
@@ -94,7 +97,9 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        $service->delete();
-        return redirect()->route('services.index');
+        if($service->delete())
+        {
+            return redirect()->route('services.index');
+        }
     }
 }

@@ -22,7 +22,7 @@
   </thead>
   <tbody>
     @foreach($services as $service)
-      <tr class="row mx-0">
+      <tr class="row mx-0 ">
         <td scope="row" class="col-md-1">{{$loop->iteration}}</td>
         <td class="col-md-3">{{$service->name}}</td>
         <td class="col-md-7">{{$service->content}}</td>

@@ -52,7 +52,7 @@ class StoreUserCreate extends FormRequest
             'roles_id.integer' => "Ce n'est pas bien d'essayer de tricher",
             'roles_id.exists' => "Ce n'est pas bien d'essayer de tricher",
             'password.required' => "Il faut impérativement un mot de passe",
-            'password.min' => "Minimum :max caractères",
+            'password.min' => "Minimum :min caractères",
             'password.confirmed' => "Les mots de passe ne corespondent pas",
             'job.max' => 'Maximum :max caactères',
         ];

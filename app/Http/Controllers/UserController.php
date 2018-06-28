@@ -132,6 +132,8 @@ class UserController extends Controller
             {
                 Storage::disk('imgUser')->delete($user->image);
             }
+
+            return redirect()->routet('users.index');
         }
     }
 }

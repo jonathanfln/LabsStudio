@@ -17,18 +17,6 @@ Route::get('/blog', 'FrontController@blog')->name('blog');
 Route::get('/contact', 'FrontController@contact')->name('contact');
 Route::get('/login', 'FrontController@login')->name('login');
 
-Route::get('/services', function () {
-    return view('services');
-})->name('services');
-
-Route::get('/blog', function () {
-    return view('blog');
-})->name('blog');
-
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
-
 
 
 Auth::routes();

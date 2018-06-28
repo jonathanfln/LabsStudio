@@ -103,6 +103,7 @@ class ImgCarouselController extends Controller
         if($carousel->delete())
         {
             Storage::disk('imgCarousel')->delete($carousel->image);
+            
             return redirect()->route('carousel.index');
         };
     }
