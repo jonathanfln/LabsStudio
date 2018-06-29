@@ -161,6 +161,11 @@ return [
             'url'         => 'admin/tags',
             'icon'        => 'tag',
         ],
+        [
+            'text'        => 'Articles',
+            'url'         => 'admin/articles',
+            'icon'        => 'tag',
+        ],
         'ACCOUNT SETTINGS',
         [
             'text' => 'Profile',

@@ -15,8 +15,8 @@
         <p>{{$testimonial->content}}</p>
       </div>
       <div class="box-body">
-        <img src="{{Storage::disk('imgClient')->url($testimonial->client->image)}}" alt="{{$testimonial->client->name}}" class="img-fluid">
-        <p class="d-inline-block">{{$testimonial->client->name}}</p>
+        <img src="{{Storage::disk('imgClient')->url($testimonial->client->image)}}" alt="{{$testimonial->client->name}}" class="rounded-circle" width="">
+        <h3 class="d-inline-block ml-3">{{$testimonial->client->name}}</h3>
       </div>
     </div>
   </div>
