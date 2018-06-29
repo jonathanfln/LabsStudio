@@ -96,96 +96,24 @@
 					<h2>What our clients say</h2>
 				</div>
 				<div class="owl-carousel" id="testimonial-slide">
+					@foreach($testimonials as $testimonial)
 					<!-- single testimonial -->
 					<div class="testimonial">
 						<span>‘​‌‘​‌</span>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla.
-							Nulla sit amet luctus dolor. Etiam finibus consequa.</p>
+						<p>
+							{{$testimonial->content}}
+						</p>
 						<div class="client-info">
 							<div class="avatar">
-								<img src="{{asset('theme/img/avatar/01.jpg')}}" alt="">
+								<img src="{{Storage::disk('imgClient')->url($testimonial->client->image)}}" alt="{{$testimonial->client->name}}">
 							</div>
 							<div class="client-name">
-								<h2>Michael Smith</h2>
-								<p>CEO Company</p>
+								<h2>{{$testimonial->client->name}}</h2>
+								<p>{{$testimonial->client->company}}</p>
 							</div>
 						</div>
 					</div>
-					<!-- single testimonial -->
-					<div class="testimonial">
-						<span>‘​‌‘​‌</span>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla.
-							Nulla sit amet luctus dolor. Etiam finibus consequa.</p>
-						<div class="client-info">
-							<div class="avatar">
-								<img src="{{asset('theme/img/avatar/02.jpg')}}" alt="">
-							</div>
-							<div class="client-name">
-								<h2>Michael Smith</h2>
-								<p>CEO Company</p>
-							</div>
-						</div>
-					</div>
-					<!-- single testimonial -->
-					<div class="testimonial">
-						<span>‘​‌‘​‌</span>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla.
-							Nulla sit amet luctus dolor. Etiam finibus consequa.</p>
-						<div class="client-info">
-							<div class="avatar">
-								<img src="{{asset('theme/img/avatar/01.jpg')}}" alt="">
-							</div>
-							<div class="client-name">
-								<h2>Michael Smith</h2>
-								<p>CEO Company</p>
-							</div>
-						</div>
-					</div>
-					<!-- single testimonial -->
-					<div class="testimonial">
-						<span>‘​‌‘​‌</span>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla.
-							Nulla sit amet luctus dolor. Etiam finibus consequa.</p>
-						<div class="client-info">
-							<div class="avatar">
-								<img src="{{asset('theme/img/avatar/02.jpg')}}" alt="">
-							</div>
-							<div class="client-name">
-								<h2>Michael Smith</h2>
-								<p>CEO Company</p>
-							</div>
-						</div>
-					</div>
-					<!-- single testimonial -->
-					<div class="testimonial">
-						<span>‘​‌‘​‌</span>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla.
-							Nulla sit amet luctus dolor. Etiam finibus consequa.</p>
-						<div class="client-info">
-							<div class="avatar">
-								<img src="{{asset('theme/img/avatar/01.jpg')}}" alt="">
-							</div>
-							<div class="client-name">
-								<h2>Michael Smith</h2>
-								<p>CEO Company</p>
-							</div>
-						</div>
-					</div>
-					<!-- single testimonial -->
-					<div class="testimonial">
-						<span>‘​‌‘​‌</span>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur leo est, feugiat nec elementum id, suscipit id nulla.
-							Nulla sit amet luctus dolor. Etiam finibus consequa.</p>
-						<div class="client-info">
-							<div class="avatar">
-								<img src="{{asset('theme/img/avatar/02.jpg')}}" alt="">
-							</div>
-							<div class="client-name">
-								<h2>Michael Smith</h2>
-								<p>CEO Company</p>
-							</div>
-						</div>
-					</div>
+					@endforeach
 				</div>
 			</div>
 		</div>
@@ -200,8 +128,9 @@
 	<div class="overlay"></div>
 	<div class="container">
 		<div class="section-title">
-			<h2>Get in
-				<span>the Lab</span> and meet the team</h2>
+			<h2>
+				Get in<span>the Lab</span> and meet the team
+			</h2>
 		</div>
 		<div class="row">
 			<!-- single member -->

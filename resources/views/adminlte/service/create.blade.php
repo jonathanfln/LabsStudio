@@ -52,7 +52,7 @@
         @foreach($icons as $icon)
           <div class="row align-items-center ml-5"><h1 class="d-inline-block mr-3"><i class="{{$icon->icon}}"></i></h1><h3 class="d-inline-block">{{$icon->icon}}</h3></div>
         @endforeach
-        <div class="text-center">
+        <div class="">
           {{$icons->links()}}
         </div>
       </div>

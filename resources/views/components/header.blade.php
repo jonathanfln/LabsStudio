@@ -10,19 +10,19 @@
 		</div>
 		<nav>
 			<ul class="menu-list">
-				<li class="">
-					<a href="{{route('welcome')}}">Home</a>
+				<li class="{{Route::is('welcome')?'active':''}}">
+					<a class="" href="{{route('welcome')}}">Home</a>
 				</li>
-				<li>
+				<li class="{{Route::is('services')?'active':''}}">
 					<a href="{{route('services')}}">Services</a>
 				</li>
-				<li>
+				<li class="{{Route::is('blog')?'active':''}}">
 					<a href="{{route('blog')}}">Blog</a>
 				</li>
-				<li>
+				<li class="{{Route::is('contact')?'active':''}}">
 					<a href="{{route('contact')}}">Contact</a>
 				</li>
-				<li>
+				<li class="{{Route::is('login')?'active':''}}">
 					<a href="{{route('login')}}">Login</a>
 				</li>
 			</ul>

@@ -19,8 +19,8 @@
         <div class="card-body text-center">
           <p>{{$testimonial->content}}</p>
           <hr>
-          <img src="{{Storage::disk('imgClient')->url($testimonial->client->image)}}" alt="{{$testimonial->client->name}}" class="img-fluid">
-          <h4 class="mt-2 d-inline-block">{{$testimonial->client->name}}</h4>
+          <img src="{{Storage::disk('imgClient')->url($testimonial->client->image)}}" alt="{{$testimonial->client->name}}" class="rounded-circle" width="25%">
+          <h5 class="mt-2 ml-3 d-inline-block">{{$testimonial->client->name}}</h5>
         </div>
       </div>
     </a>

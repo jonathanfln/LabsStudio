@@ -28,35 +28,17 @@
     <div class="row">
       <!-- feature item -->
       <div class="col-md-4 col-sm-4 features">
+        @foreach($services1Rand as $service)
         <div class="icon-box light left">
           <div class="service-text">
-            <h2>Get in the lab</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
+            <h2>{{$service->name}}</h2>
+            <p>{{$service->content}}</p>
           </div>
           <div class="icon">
-            <i class="flaticon-002-caliper"></i>
+            <i class="{{$service->image}}"></i>
           </div>
         </div>
-        <!-- feature item -->
-        <div class="icon-box light left">
-          <div class="service-text">
-            <h2>Projects online</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
-          </div>
-          <div class="icon">
-            <i class="flaticon-019-coffee-cup"></i>
-          </div>
-        </div>
-        <!-- feature item -->
-        <div class="icon-box light left">
-          <div class="service-text">
-            <h2>SMART MARKETING</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
-          </div>
-          <div class="icon">
-            <i class="flaticon-020-creativity"></i>
-          </div>
-        </div>
+        @endforeach
       </div>
       <!-- Devices -->
       <div class="col-md-4 col-sm-4 devices">
@@ -66,35 +48,17 @@
       </div>
       <!-- feature item -->
       <div class="col-md-4 col-sm-4 features">
-        <div class="icon-box light">
-          <div class="icon">
-            <i class="flaticon-037-idea"></i>
-          </div>
+        @foreach($services2Rand as $service)
+        <div class="icon-box light left">
           <div class="service-text">
-            <h2>Get in the lab</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
+            <h2>{{$service->name}}</h2>
+            <p>{{$service->content}}</p>
+          </div>
+          <div class="icon">
+            <i class="{{$service->image}}"></i>
           </div>
         </div>
-        <!-- feature item -->
-        <div class="icon-box light">
-          <div class="icon">
-            <i class="flaticon-025-imagination"></i>
-          </div>
-          <div class="service-text">
-            <h2>Projects online</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
-          </div>
-        </div>
-        <!-- feature item -->
-        <div class="icon-box light">
-          <div class="icon">
-            <i class="flaticon-008-team"></i>
-          </div>
-          <div class="service-text">
-            <h2>SMART MARKETING</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur ad ipiscing elit. Curabitur leo est, feugiat nec</p>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
     <div class="text-center mt100">

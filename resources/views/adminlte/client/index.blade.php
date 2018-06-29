@@ -15,8 +15,8 @@
   @foreach($clients as $client)
   <div class="col-md-3 mb-5 ">
     <div class="card mx-auto" style="width: 18rem;">
-      <img class="card-img-top" src="{{Storage::disk('imgClient')->url($client->image)}}" alt="{{$client->name}}">
       <div class="card-body text-center">
+        <img class="mb-3" src="{{Storage::disk('imgClient')->url($client->image)}}" alt="{{$client->name}}">
         <h4>{{$client->name}}</h4>
         <h6>{{$client->company}}</h6>
         <hr>

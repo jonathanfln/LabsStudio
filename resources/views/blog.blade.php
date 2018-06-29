@@ -181,15 +181,27 @@
 						</li>
 					</ul>
 				</div>
+				@foreach($testimonialRand as $testimonial)
 				<!-- Single widget -->
 				<div class="widget-item">
 					<h2 class="widget-title">Quote</h2>
-					<div class="quote">
-						<span class="quotation">‘​‌‘​‌</span>
-						<p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. Aliquam erat volutpat.
-							Donec fermen tum convallis ante eget tristique. Sed lacinia turpis at ultricies vestibulum.</p>
+					<div class="testimonial">
+						<span>‘​‌‘​‌</span>
+						<p class="">
+							{{$testimonial->content}}
+						</p>
+						<div class="client-info">
+							<div class="avatar">
+								<img src="{{Storage::disk('imgClient')->url($testimonial->client->image)}}" alt="{{$testimonial->client->name}}">
+							</div>
+							<div class="client-name">
+								<h2 class="">{{$testimonial->client->name}}</h2>
+								<p>{{$testimonial->client->company}}</p>
+							</div>
+						</div>
 					</div>
 				</div>
+				@endforeach
 			</div>
 		</div>
 	</div>
