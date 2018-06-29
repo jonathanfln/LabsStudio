@@ -13,7 +13,7 @@
     <div class="box">
       <div class="box-header">
         @if($user->image != NULL)
-        <img src="" alt="{{$user->name}}" class="mr-3 ">
+        <img src="{{Storage::disk('imgUser')->url($user->image)}}" alt="{{$user->name}}" class="mr-3 ">
         @endif
         <h2 class="d-inline-block">{{$user->name}}</h2>
         <h2 class="d-inline-block mx-2">|</h2>

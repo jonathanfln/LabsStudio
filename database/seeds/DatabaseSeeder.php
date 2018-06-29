@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             TestimonialsTableSeeder::class,
             ImgCarouselsTableSeeder::class,
             ProjetsTableSeeder::class,
+            TagsTableSeeder::class,
         ]);
     }
 }

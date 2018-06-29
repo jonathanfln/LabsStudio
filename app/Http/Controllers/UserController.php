@@ -49,7 +49,6 @@ class UserController extends Controller
         }
         $user->email = $request->email;
         $user->roles_id = $request->roles_id;
-        // dd($user);
         $user->password = bcrypt($request->password);
         if($request->job != NULL)
         {

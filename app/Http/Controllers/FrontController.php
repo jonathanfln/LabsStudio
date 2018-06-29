@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\ImgCarousel;
 use App\Service;
 use App\Projet;
+use App\Tag;
+use App\User;
 use App\Testimonial;
 use Storage;
 
@@ -17,7 +19,8 @@ class FrontController extends Controller
         $servicesRand = Service::orderByRaw('RAND()')->take(3)->get();
         $services = Service::orderBy('created_at','DESC')->paginate(9);
         $testimonials = Testimonial::with('client')->get()->sortByDesc('created_at')->take(6);
-        return view('welcome',compact('carouselImgs','servicesRand','services','testimonials'));
+        $team = User::all();
+        return view('welcome',compact('carouselImgs','servicesRand','services','testimonials','team'));
     }
     
     public function services()
@@ -32,7 +35,8 @@ class FrontController extends Controller
     public function blog()
     {
         $testimonialRand = Testimonial::orderByRaw('RAND()')->take(1)->get();
-        return view('blog', compact('testimonialRand'));
+        $tags = Tag::all();
+        return view('blog', compact('testimonialRand','tags'));
     }
     
     public function contact()

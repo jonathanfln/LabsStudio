@@ -25,7 +25,7 @@ class CreateArticlesTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('title', 45);
-            $table->string('content', 45);
+            $table->text('content');
             $table->unsignedInteger('users_id');
             $table->unsignedInteger('categories_id');
 

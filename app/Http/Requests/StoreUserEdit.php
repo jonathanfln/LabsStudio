@@ -25,7 +25,7 @@ class StoreUserEdit extends FormRequest
     {
         return [
             'name' => 'required|max:45',
-            'image' => 'image|mimes:jpg',
+            'image' => 'image|mimes:jpeg,png,bmp,gif,svg,jpg',
             'email' => 'required|email|max:45|unique:users,email,'.$this->user->id,
             'roles_id' => 'required|integer|exists:roles,id',
             'password' => 'nullable|min:8|confirmed',

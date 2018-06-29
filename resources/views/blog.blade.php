@@ -158,27 +158,11 @@
 				<div class="widget-item">
 					<h2 class="widget-title">Tags</h2>
 					<ul class="tag">
+						@foreach($tags as $tag)
 						<li>
-							<a href="">branding</a>
+							<a href="">{{$tag->name}}</a>
 						</li>
-						<li>
-							<a href="">identity</a>
-						</li>
-						<li>
-							<a href="">video</a>
-						</li>
-						<li>
-							<a href="">design</a>
-						</li>
-						<li>
-							<a href="">inspiration</a>
-						</li>
-						<li>
-							<a href="">web design</a>
-						</li>
-						<li>
-							<a href="">photography</a>
-						</li>
+						@endforeach
 					</ul>
 				</div>
 				@foreach($testimonialRand as $testimonial)
