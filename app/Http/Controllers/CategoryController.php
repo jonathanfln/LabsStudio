@@ -63,7 +63,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $categorie= Category::find($id);
+        $categorie = Category::find($id);
         return view('adminlte.categorie.edit', compact('categorie'));
     }
     
@@ -76,7 +76,7 @@ class CategoryController extends Controller
      */
     public function update(StoreCatEdit $request, $id)
     {
-        $categorie= Category::find($id);
+        $categorie = Category::find($id);
         $categorie->name = $request->name;
         $categorie->save();
         return redirect()->route('categories.index');

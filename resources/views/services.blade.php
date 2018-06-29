@@ -16,7 +16,7 @@
 </div>
 <!-- Page header end-->
 
-@include('components.services')
+@include('components.services', $services)
 
 <!-- features section -->
 <div class="team-section spad">
@@ -114,7 +114,7 @@
         <div class="col-md-4 col-sm-6">
           <div class="sv-card">
             <div class="card-img">
-              <img src="{{Storage::disk('imgProjet')->url($projet->image)}}" alt="">
+              <img src="{{Storage::disk('imgProjet')->url($projet->image)}}" alt="{{$projet->name}}">
             </div>
             <div class="card-text">
               <h2>{{$projet->name}}</h2>
@@ -125,6 +125,9 @@
           </div>
         </div>
       @endforeach
+    </div>
+    <div>
+      {{$projets->links('components.pagination')}}
     </div>
   </div>
 </div>

@@ -13,14 +13,16 @@ class FrontController extends Controller
     public function welcome()
     {
         $carouselImgs = ImgCarousel::all();
-        $services = Service::orderByRaw('RAND()')->take(3)->get();
-        return view('welcome',compact('carouselImgs','services'));
+        $servicesRand = Service::orderByRaw('RAND()')->take(3)->get();
+        $services = Service::orderBy('created_at','DESC')->paginate(9);
+        return view('welcome',compact('carouselImgs','servicesRand','services'));
     }
     
     public function services()
     {
-        $projets = Projet::all()->sortByDesc('created_at');
-        return view('services', compact('projets'));
+        $projets = Projet::orderBy('created_at','DESC')->paginate(3);
+        $services = Service::orderBy('created_at','DESC')->paginate(9);
+        return view('services', compact('projets','services'));
     }
 
     public function contact()

@@ -13,6 +13,7 @@
 	<div id="hero-slider" class="owl-carousel">
 		@foreach($carouselImgs as $img)
 			<div class="item  hero-item" data-bg="{{Storage::disk('imgCarousel')->url($img->image)}}"></div>
+			
 		@endforeach
 	</div>
 </div>
@@ -27,7 +28,7 @@
 		<div class="container">
 			<div class="row">
 				<!-- single card -->
-				@foreach($services as $service)
+				@foreach($servicesRand as $service)
 				<div class="col-md-4 col-sm-6">
 					<div class="lab-card">
 						<div class="icon">
@@ -192,7 +193,7 @@
 </div>
 <!-- Testimonial section end-->
 
-@include('components.services')
+@include('components.services', $services)
 
 <!-- Team Section -->
 <div class="team-section spad">
