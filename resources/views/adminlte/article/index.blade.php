@@ -8,7 +8,22 @@
 
 @section('content')
     <div class="clearfix mb-3">
-    <a href="{{route('articles.create')}}" class="btn btn-success float-right">Ajouter un nouvel article</a>
+        <a href="{{route('articles.create')}}" class="btn btn-success float-right">Ajouter un nouvel article</a>
     </div>
     <hr>
+    <div class="row ">
+    @foreach($articles as $article)
+    <div class="col-md-3 mb-4">
+        <div class="card mx-auto" style="width: 18rem;">
+            <a href="{{route('articles.show', ['article'=>$article->id])}}" class="">
+                <img class="card-img-top" src="{{Storage::disk('imgArticle')->url($article->image)}}" alt="{{$article->name}}">
+                <div class="card-body text-center text-dark">
+                    <h3>{{$article->title}}</h3>
+                    <p>{{$article->content}}</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    @endforeach
+</div>
 @stop

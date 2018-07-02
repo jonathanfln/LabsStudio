@@ -16,7 +16,7 @@
         <h4 class="d-inline-block">{{$client->company}}</h4>
       </div>
       <div class="box-body">
-        <img class="img-fluid" src="{{Storage::disk('imgClient')->url($client->image)}}" alt="{{$client->name}}">
+        <img class="rounded-circle" src="{{Storage::disk('imgClient')->url($client->image)}}" alt="{{$client->name}}">
       </div>
     </div>
   </div>

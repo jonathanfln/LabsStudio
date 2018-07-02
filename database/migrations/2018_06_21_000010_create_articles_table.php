@@ -24,10 +24,11 @@ class CreateArticlesTable extends Migration
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('title', 45);
+            $table->string('title');
             $table->text('content');
             $table->unsignedInteger('users_id');
-            $table->unsignedInteger('categories_id');
+            $table->string('image', 45)->nullable();
+            $table->unsignedInteger('categories_id')->nullable();
 
             $table->index(["categories_id"], 'fk_articles_categories1_idx');
 

@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Storage;
+use App\Article;
+use App\Category;
+use App\Tag;
+use App\User;
+use Auth;
 
 class ArticleController extends Controller
 {
@@ -13,7 +19,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Articles::all();
+        $articles = Article::all()->sortByDesc('created_at');
         return view('adminlte.article.index', compact('articles'));
     }
 
@@ -24,7 +30,9 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('adminlte.article.create');
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('adminlte.article.create', compact('categories', 'tags'));
     }
 
     /**
@@ -35,7 +43,28 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $article = new Article;
+        $article->title = $request->title;
+        $article->content = $request->content;
+        // dd(Auth::user()->id);
+        $article->users_id = Auth::user()->id;
+        $article->categories_id = $request->categories_id;
+        if($request->image != NULL)
+        {
+            $article->image = $request->image->store('', 'imgArticle');
+        }
+
+        
+        if($article->save())
+        {
+            foreach($request->tag_id as $tag)
+            {
+            $article->tags()->attach($tag);
+            }
+
+            return redirect()->route('articles.index');
+        }
+
     }
 
     /**
@@ -44,9 +73,12 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Article $article)
     {
-        //
+        $user = User::all();
+        $tags = Tag::all();
+        $category = Category::all();
+        return view('adminlte.article.show', compact('article', 'user', 'tags', 'category'));
     }
 
     /**
@@ -55,9 +87,11 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Article $article)
     {
-        //
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('adminlte.article.edit', compact('article', 'categories', 'tags'));
     }
 
     /**
@@ -67,9 +101,29 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Article $article)
     {
-        //
+        $article->title = $request->title;
+        $article->content = $request->content;
+        // dd(Auth::user()->id);
+        $article->users_id = Auth::user()->id;
+        $article->categories_id = $request->categories_id;
+        if($request->image != NULL)
+        {
+            $article->image = $request->image->store('', 'imgArticle');
+        }
+
+        $article->tags()->detach();
+        
+        if($article->save())
+        {
+            foreach($request->tag_id as $tag)
+            {
+            $article->tags()->attach($tag);
+            }
+
+            return redirect()->route('articles.show', ['article'=>$article->id]);
+        }
     }
 
     /**
@@ -78,8 +132,13 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Article $article)
     {
-        //
+        $article->tags()->detach();
+        
+        if($article->delete())
+        {
+            return redirect()->route('articles.index');
+        }
     }
 }
