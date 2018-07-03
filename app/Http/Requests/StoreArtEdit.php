@@ -28,7 +28,7 @@ class StoreArtEdit extends FormRequest
             'content' => 'required',
             'categories_id' => 'required|integer|exists:categories,id',
             'tags_id' => 'required',
-            'image' => 'max:20000000',
+            'image' => 'max:20000000|dimensions:min_width=755,min_height=270',
         ];
     }
 
@@ -45,6 +45,7 @@ class StoreArtEdit extends FormRequest
             'title.max' => 'Maximum :max caractères',
             'content.required' => "Il faut impérativement un contenu",
             'image.max' => "L'image ne peut pas dépasser 20MB",
+            'image.dimensions' => "L'image doit être au minimum de 755*270",
             'catégories_id.required' => "Ce n'est pas bien d'essayer de tricher",
             'catégories_id.integer' => "Ce n'est pas bien d'essayer de tricher",
             'catégories_id.exists' => "Ce n'est pas bien d'essayer de tricher",

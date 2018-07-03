@@ -26,7 +26,7 @@ class StoreProjCreate extends FormRequest
         return [
             'name' => 'required|max:45',
             'content' => 'required|max:255',
-            'image' => 'required|max:20000000'
+            'image' => 'required|max:20000000|dimensions:min_width=362,min_height=271'
         ];
     }
 
@@ -44,6 +44,7 @@ class StoreProjCreate extends FormRequest
             'content.max' => 'Maximum :max caractères',
             'image.required' => "Il faut impérativement une image du projet",
             'image.max' => 'Maximum :max caractères',
+            'image.dimensions' => "L'image doit être au minimum de 362*271",
         ];
     }
 }

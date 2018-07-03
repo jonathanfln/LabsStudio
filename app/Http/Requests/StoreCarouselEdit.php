@@ -25,7 +25,7 @@ class StoreCarouselEdit extends FormRequest
     {
         return [
             'name' => 'required|max:45',
-            'image' => 'max:20000000',
+            'image' => 'max:20000000|dimensions:min_width=1920,min_height=1274',
         ];
     }
 
@@ -41,6 +41,7 @@ class StoreCarouselEdit extends FormRequest
             'name.required' => "Il faut impérativement un nom pour l'image",
             'name.max' => 'Maximum :max caractères',
             'image.max' => "L'image ne peut pas dépasser 20MB",
+            'image.dimensions' => "L'image doit être au minimum de 1920*1274",
         ];
     }
 }

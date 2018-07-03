@@ -26,7 +26,7 @@ class StoreProjEdit extends FormRequest
         return [
             'name' => 'required|max:45',
             'content' => 'required|max:255',
-            'image' => 'max:20000000'
+            'image' => 'max:20000000|dimensions:min_width=362,min_height=271'
         ];
     }
 
@@ -43,6 +43,7 @@ class StoreProjEdit extends FormRequest
             'name.max' => 'Maximum :max caractères',
             'content.max' => 'Maximum :max caractères',
             'image.max' => 'Maximum :max caractères',
+            'image.dimensions' => "L'image doit être au minimum de 362*271",
         ];
     }
 }

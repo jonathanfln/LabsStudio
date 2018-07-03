@@ -25,7 +25,7 @@ class StoreUserCreate extends FormRequest
     {
         return [
             'name' => 'required|max:45',
-            'image' => 'image|mimes:jpeg,png,bmp,gif,svg,jpg',
+            'image' => 'image|mimes:jpeg,png,bmp,gif,svg,jpg|dimensions:min_width=360,min_height=448',
             'email' => 'required|email|max:45|unique:users,email',
             'roles_id' => 'required|integer|exists:roles,id',
             'password' => 'required|min:8|confirmed',
@@ -44,6 +44,7 @@ class StoreUserCreate extends FormRequest
             'name.required' => "Il faut impérativement un avis",
             'name.max' => 'Maximum :max caractères',
             'image.image' => 'Le fichier doit être une image',
+            'image.dimensions' => "L'image doit être au minimum de 360*448",
             'email.required' => 'Il faut impérativement une adresse email',
             'email.email' => "Ce n'est pas une adresse email valide",
             'email.max' => 'Maximum :max caractères',

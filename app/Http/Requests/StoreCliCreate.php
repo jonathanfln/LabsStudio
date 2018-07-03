@@ -26,7 +26,7 @@ class StoreCliCreate extends FormRequest
         return [
             'name' => 'required|max:45',
             'company' => 'required|max:45',
-            'image' => 'required|max:20000000'
+            'image' => 'required|max:20000000|dimensions:min_width=100,min_height=100'
         ];
     }
 
@@ -44,6 +44,7 @@ class StoreCliCreate extends FormRequest
             'company.max' => 'Maximum :max caractères',
             'image.required' => "Il faut impérativement une photo du client",
             'image.max' => 'Maximum :max caractères',
+            'image.dimensions' => "L'image doit être au minimum de 100*100",
         ];
     }
 }

@@ -26,7 +26,7 @@ class StoreCliEdit extends FormRequest
         return [
             'name' => 'required|max:45',
             'company' => 'required|max:45',
-            'image' => 'max:20000000'
+            'image' => 'max:20000000|dimensions:min_width=100,min_height=100'
         ];
     }
 
@@ -42,8 +42,8 @@ class StoreCliEdit extends FormRequest
             'company.required' => "Il faut impérativement un nom de société",
             'name.max' => 'Maximum :max caractères',
             'company.max' => 'Maximum :max caractères',
-            'image.required' => "Il faut impérativement une photo du client",
             'image.max' => 'Maximum :max caractères',
+            'image.dimensions' => "L'image doit être au minimum de 100*100",
         ];
     }
 }
