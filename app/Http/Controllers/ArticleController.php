@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreArtCreate;
+use App\Http\Requests\StoreArtEdit;
 use Illuminate\Http\Request;
-use Storage;
-use App\Article;
 use App\Category;
-use App\Tag;
+use App\Article;
 use App\User;
+use App\Tag;
+use Storage;
 use Auth;
 
 class ArticleController extends Controller
@@ -41,7 +43,7 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreArtCreate $request)
     {
         $article = new Article;
         $article->title = $request->title;
@@ -57,7 +59,7 @@ class ArticleController extends Controller
         
         if($article->save())
         {
-            foreach($request->tag_id as $tag)
+            foreach($request->tags_id as $tag)
             {
             $article->tags()->attach($tag);
             }
@@ -101,7 +103,7 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Article $article)
+    public function update(StoreArtEdit $request, Article $article)
     {
         $article->title = $request->title;
         $article->content = $request->content;
@@ -117,7 +119,7 @@ class ArticleController extends Controller
         
         if($article->save())
         {
-            foreach($request->tag_id as $tag)
+            foreach($request->tags_id as $tag)
             {
             $article->tags()->attach($tag);
             }

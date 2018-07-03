@@ -17,9 +17,10 @@
         <div class="card mx-auto" style="width: 18rem;">
             <a href="{{route('articles.show', ['article'=>$article->id])}}" class="">
                 <img class="card-img-top" src="{{Storage::disk('imgArticle')->url($article->image)}}" alt="{{$article->name}}">
-                <div class="card-body text-center text-dark">
+                <div class="card-body text-dark">
                     <h3>{{$article->title}}</h3>
-                    <p>{{$article->content}}</p>
+                    {{-- <p>{{$article->content}}</p> --}}
+                    <p>{{$description = substr($article->content, 0, 300)}}</p>
                 </div>
             </a>
         </div>

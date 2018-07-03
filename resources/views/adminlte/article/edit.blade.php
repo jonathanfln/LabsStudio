@@ -40,13 +40,13 @@
                 <div class="col-md-6">
                     <div class="form-check text-center">
                         <label for=""><h3>Tags</h3></label>
-                        @if($errors->has('tag_id'))
-                        <div class="text-danger">{{$errors->first('tag_id')}}</div>
+                        @if($errors->has('tags_id'))
+                            <div class="text-danger">{{$errors->first('tags_id')}}</div>
                         @endif
                         <div class="row">
                         @foreach($tags as $tag)
                             <label class="form-check-label col-md-3">
-                            <input type="checkbox" class="form-check-input" name="tag_id[]" id="" value="{{$tag->id}}"
+                            <input type="checkbox" class="form-check-input" name="tags_id[]" id="" value="{{$tag->id}}"
                             @foreach(old('techno_id', $article->tags) as $tagchecked)
                             @if(old('techno_id'))
                                 {{($tagchecked == $tag->id) ? 'checked' :''}}
