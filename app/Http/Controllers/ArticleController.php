@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreArtCreate;
 use App\Http\Requests\StoreArtEdit;
+use App\Services\ImageResize;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Article;
@@ -14,6 +15,12 @@ use Auth;
 
 class ArticleController extends Controller
 {
+
+    public function __construct(ImageResize $imageResize)
+    {
+        $this->imageResize = $imageResize;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -53,7 +60,14 @@ class ArticleController extends Controller
         $article->categories_id = $request->categories_id;
         if($request->image != NULL)
         {
-            $article->image = $request->image->store('', 'imgArticle');
+            // $article->image = $request->image->store('', 'imgArticle');
+            $image = [
+                "name" => $request->image,
+                "disk" => 'imgArticle',
+                "w" => 755,
+                "h" => 270,
+            ];
+            $article->image = $this->imageResize->imageStore($image);
         }
 
         
@@ -112,7 +126,18 @@ class ArticleController extends Controller
         $article->categories_id = $request->categories_id;
         if($request->image != NULL)
         {
-            $article->image = $request->image->store('', 'imgArticle');
+            if(Storage::disk('imgArticle')->exists($article->image))
+            {
+                Storage::disk('imgArticle')->delete($article->image);
+            }
+            // $article->image = $request->image->store('', 'imgArticle');
+            $image = [
+                "name" => $request->image,
+                "disk" => 'imgArticle',
+                "w" => 755,
+                "h" => 270,
+            ];
+            $article->image = $this->imageResize->imageStore($image);
         }
 
         $article->tags()->detach();
@@ -140,6 +165,7 @@ class ArticleController extends Controller
         
         if($article->delete())
         {
+            Storage::disk('imgArticle')->delete($article->image);
             return redirect()->route('articles.index');
         }
     }

@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserCreate;
+use App\Http\Requests\StoreUserEdit;
+use App\Services\ImageResize;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
 use Storage;
-use App\Http\Requests\StoreUserCreate;
-use App\Http\Requests\StoreUserEdit;
 
 class UserController extends Controller
 {
+
+    public function __construct(ImageResize $imageResize)
+    {
+        $this->imageResize = $imageResize;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -45,7 +52,13 @@ class UserController extends Controller
         $user->name = $request->name;
         if($request->image != NULL)
         {
-            $user->image = $request->image->store('', 'imgUser');
+            $image = [
+                "name" => $request->image,
+                "disk" => 'imgUser',
+                "w" => 360,
+                "h" => 448,
+            ];
+            $user->image = $this->imageResize->imageStore($image);
         }
         $user->email = $request->email;
         $user->roles_id = $request->roles_id;
@@ -99,7 +112,13 @@ class UserController extends Controller
             {
                 Storage::disk('imgUser')->delete($user->image);
             }
-            $user->image = $request->image->store('', 'imgUser');
+            $image = [
+                "name" => $request->image,
+                "disk" => 'imgUser',
+                "w" => 360,
+                "h" => 448,
+            ];
+            $user->image = $this->imageResize->imageStore($image);
         }
         if($request->email != $user->email)
         {
@@ -127,10 +146,7 @@ class UserController extends Controller
     {
         if($user->delete())
         {
-            if(Storage::disk('imgUser')->exists($user->image))
-            {
                 Storage::disk('imgUser')->delete($user->image);
-            }
 
             return redirect()->routet('users.index');
         }

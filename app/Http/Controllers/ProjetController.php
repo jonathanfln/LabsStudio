@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProjCreate;
+use App\Http\Requests\StoreProjEdit;
+use App\Services\ImageResize;
 use Illuminate\Http\Request;
 use App\Projet;
 use Storage;
-use App\Http\Requests\StoreProjCreate;
-use App\Http\Requests\StoreProjEdit;
 
 class ProjetController extends Controller
 {
+
+    public function __construct(ImageResize $imageResize)
+    {
+        $this->imageResize = $imageResize;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -42,7 +49,16 @@ class ProjetController extends Controller
         $projet = new Projet;
         $projet->name = $request->name;
         $projet->content = $request->content;
-        $projet->image = $request->image->store('','imgProjet');
+        if($request->image != NULL)
+        {
+            $image = [
+                "name" => $request->image,
+                "disk" => 'imgProjet',
+                "w" => 372,
+                "h" => 271,
+            ];
+            $projet->image = $this->imageResize->imageStore($image);
+        }
         $projet->save();
 
         return redirect()->route('projets.show', ['projet'=>$projet->id]);
@@ -87,7 +103,13 @@ class ProjetController extends Controller
             {
                 Storage::disk('imgProjet')->delete($projet->image);
             }
-            $projet->name = $request->image->store('','imgProjet');
+            $image = [
+                "name" => $request->image,
+                "disk" => 'imgProjet',
+                "w" => 372,
+                "h" => 271,
+            ];
+            $projet->image = $this->imageResize->imageStore($image);
         }
         $projet->save();
 

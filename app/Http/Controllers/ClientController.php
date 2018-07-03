@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCliCreate;
+use App\Http\Requests\StoreCliEdit;
+use App\Services\ImageResize;
 use Illuminate\Http\Request;
 use App\Client;
 use Storage;
-use App\Http\Requests\StoreCliCreate;
-use App\Http\Requests\StoreCliEdit;
 
 class ClientController extends Controller
 {
+
+    public function __construct(ImageResize $imageResize)
+    {
+        $this->imageResize = $imageResize;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -42,7 +49,16 @@ class ClientController extends Controller
         $client = new Client;
         $client->name = $request->name;
         $client->company = $request->company;
-        $client->image = $request->image->store('','imgClient');
+        if($request->image != NULL)
+        {
+            $image = [
+                "name" => $request->image,
+                "disk" => 'imgClient',
+                "w" => 100,
+                "h" => 100,
+            ];
+            $client->image = $this->imageResize->imageStore($image);
+        }
         $client->save();
 
         return redirect()->route('clients.show', ['client'=>$client->id]);
@@ -87,7 +103,13 @@ class ClientController extends Controller
             {
                 Storage::disk('imgClient')->delete($client->image);
             }
-            $client->image = $request->image->store('','imgClient');
+            $image = [
+                "name" => $request->image,
+                "disk" => 'imgCient',
+                "w" => 100,
+                "h" => 100,
+            ];
+            $client->image = $this->imageResize->imageStore($image);
         };
         if($client->save())
         {

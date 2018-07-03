@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCarouselCreate;
+use App\Http\Requests\StoreCarouselEdit;
+use App\Services\ImageResize;
 use Illuminate\Http\Request;
 use App\ImgCarousel;
 use Storage;
-use App\Http\Requests\StoreCarouselCreate;
-use App\Http\Requests\StoreCarouselEdit;
 
 class ImgCarouselController extends Controller
 {
+
+    public function __construct(ImageResize $imageResize)
+    {
+        $this->imageResize = $imageResize;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -41,7 +48,15 @@ class ImgCarouselController extends Controller
     {
         $carousel = new ImgCarousel;
         $carousel->name = $request->name;
-        $carousel->image = $request->image->store('','imgCarousel');
+        if($request->image != NULL)
+        {$image = [
+                "name" => $request->image,
+                "disk" => 'imgCarousel',
+                "w" => 1920,
+                "h" => 1274,
+            ];
+            $carousel->image = $this->imageResize->imageStore($image);
+        }
         $carousel->save(); 
 
         return redirect()->route('carousel.index');
@@ -85,7 +100,13 @@ class ImgCarouselController extends Controller
             if(Storage::disk('imgCarousel')->exists($carousel->image)){
                 Storage::disk('imgCarousel')->delete($carousel->image);
             }
-            $carousel->image = $request->image->store('','imgCarousel');
+            $image = [
+                "name" => $request->image,
+                "disk" => 'imgCarousel',
+                "w" => 1920,
+                "h" => 1274,
+            ];
+            $carousel->image = $this->imageResize->imageStore($image);
         }
         $carousel->save(); 
 
