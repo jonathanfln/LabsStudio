@@ -18,9 +18,11 @@
       <div class="card mx-auto" style="width: 18rem;">
         <div class="card-body text-center">
           <p>{{$testimonial->content}}</p>
+          @if($testimonial->client != NULL)
           <hr>
           <img src="{{Storage::disk('imgClient')->url($testimonial->client->image)}}" alt="{{$testimonial->client->name}}" class="rounded-circle" width="25%">
           <h5 class="mt-2 ml-3 d-inline-block">{{$testimonial->client->name}}</h5>
+          @endif
         </div>
       </div>
     </a>

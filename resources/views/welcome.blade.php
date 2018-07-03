@@ -104,6 +104,7 @@
 							{{$testimonial->content}}
 						</p>
 						<div class="client-info">
+							@if($testimonial->client != NULL)
 							<div class="avatar">
 								<img src="{{Storage::disk('imgClient')->url($testimonial->client->image)}}" alt="{{$testimonial->client->name}}">
 							</div>
@@ -111,6 +112,7 @@
 								<h2>{{$testimonial->client->name}}</h2>
 								<p>{{$testimonial->client->company}}</p>
 							</div>
+							@endif
 						</div>
 					</div>
 					@endforeach

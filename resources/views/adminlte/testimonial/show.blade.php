@@ -14,10 +14,12 @@
       <div class="box-body">
         <p>{{$testimonial->content}}</p>
       </div>
+      @if($testimonial->client != NULL)
       <div class="box-body">
         <img src="{{Storage::disk('imgClient')->url($testimonial->client->image)}}" alt="{{$testimonial->client->name}}" class="rounded-circle" width="">
         <h3 class="d-inline-block ml-3">{{$testimonial->client->name}}</h3>
       </div>
+      @endif
     </div>
   </div>
   <div class="col-md-2">

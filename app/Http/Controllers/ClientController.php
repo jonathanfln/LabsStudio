@@ -105,7 +105,7 @@ class ClientController extends Controller
             }
             $image = [
                 "name" => $request->image,
-                "disk" => 'imgCient',
+                "disk" => 'imgClient',
                 "w" => 100,
                 "h" => 100,
             ];

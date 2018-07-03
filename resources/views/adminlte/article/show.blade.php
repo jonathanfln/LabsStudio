@@ -18,7 +18,7 @@
       @endif
       <div class="box-body text-center">
         <h1 class="d-inline-block">{{$article->title}}</h1>
-        @if($article->users_id != NULL)
+        @if($article->user != NULL)
         <h3 class="d-inline-block mx-2">|</h3>
         <h3 class="d-inline-block">{{$article->user->name}}</h3>
         @endif
@@ -26,7 +26,9 @@
       <div class="box-body">
         <div class="row">
           <div class="col-md-6 text-center">
-            <h3>{{$article->category->name}}</h3>
+            @if($article->category != NULL)
+              <h3>{{$article->category->name}}</h3>
+            @endif
           </div>
           <div class="col-md-6 text-center">
             @foreach($article->tags as $tag)
