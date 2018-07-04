@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ImgCarousel;
+use App\Category;
 use App\Service;
 use App\Article;
 use App\Projet;
@@ -11,9 +12,20 @@ use App\Tag;
 use App\User;
 use App\Testimonial;
 use Storage;
+use View;
 
 class FrontController extends Controller
 {
+    public function __construct(){
+        $categories = Category::all();
+        $tags = Tag::all();
+        $testimonialRand = Testimonial::orderByRaw('RAND()')->take(1)->get();
+
+        View::share('categories', $categories);
+        View::share('tags', $tags);
+        View::share('testimonialRand', $testimonialRand);
+
+    }
     public function welcome()
     {
         $carouselImgs = ImgCarousel::all();
@@ -35,10 +47,16 @@ class FrontController extends Controller
     
     public function blog()
     {
-        $testimonialRand = Testimonial::orderByRaw('RAND()')->take(1)->get();
-        $tags = Tag::all();
+        
+        
         $articles = Article::orderBy('created_at','DESC')->paginate(3);
-        return view('blog', compact('testimonialRand','tags', 'articles'));
+        return view('indexArticle', compact('testimonialRand', 'categories', 'tags', 'articles'));
+    }
+
+    public function showBlog(Article $article)
+    {
+        
+        return view('showArticle', compact('article'));
     }
     
     public function contact()

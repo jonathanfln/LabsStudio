@@ -1,3 +1,6 @@
+@extends('components.blog')
+
+@section('blog')
 <!-- Post item -->
 @foreach($articles as $article)
 <div class="post-item">
@@ -15,13 +18,14 @@
 			<a>
 				@foreach($article->tags as $tag)
           {{$tag->name}}
-        @endforeach</a>
+				@endforeach
+			</a>
 			<a></a>
 		</div>
 		<p>
 			{{$article->content}}
 		</p>
-		<a href="" class="read-more">Read More</a>
+		<a href="{{route('showBlog', ['article'=>$article->id])}}" class="read-more">Read More</a>
 	</div>
 </div>
 @endforeach
@@ -29,3 +33,4 @@
 <div>
 	{{$articles->links('components.pagination')}}
 </div>
+@endsection

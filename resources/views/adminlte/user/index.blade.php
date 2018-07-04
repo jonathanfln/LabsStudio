@@ -16,12 +16,15 @@
   <div class="col-md-3 mb-5 ">
     <div class="card mx-auto" style="width: 18rem;">
       {{-- <img class="card-img-top" src="{{Storage::disk('imgClient')->url($user->image)}}" alt="{{$user->name}}"> --}}
+      <a href="{{route('users.show', ['user'=>$user->id])}}" class="text-dark">
       <div class="card-body text-center">
-        <h4>{{$user->name}}</h4>
-        <h6>{{$user->company}}</h6>
-        <hr>
-        <a href="{{route('users.show', ['user'=>$user->id])}}" class="btn btn-info text-white">Voir</a>
+        <img src="{{Storage::disk('imgUser')->url ($user->image)}}" alt="{{$user->name}}" class="rounded-circle img-fluid" width="25%">
+        <div class="d-inline-block">
+          <h4>{{$user->name}}</h4>
+          <h6>{{$user->job}}</h6>
+        </div>
       </div>
+      </a>
     </div>
   </div>
   @endforeach
