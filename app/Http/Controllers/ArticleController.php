@@ -122,7 +122,6 @@ class ArticleController extends Controller
         $article->title = $request->title;
         $article->content = $request->content;
         // dd(Auth::user()->id);
-        $article->users_id = Auth::user()->id;
         $article->categories_id = $request->categories_id;
         if($request->image != NULL)
         {

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ImgCarousel;
 use App\Service;
+use App\Article;
 use App\Projet;
 use App\Tag;
 use App\User;
@@ -36,7 +37,8 @@ class FrontController extends Controller
     {
         $testimonialRand = Testimonial::orderByRaw('RAND()')->take(1)->get();
         $tags = Tag::all();
-        return view('blog', compact('testimonialRand','tags'));
+        $articles = Article::orderBy('created_at','DESC')->paginate(3);
+        return view('blog', compact('testimonialRand','tags', 'articles'));
     }
     
     public function contact()
