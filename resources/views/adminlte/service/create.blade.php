@@ -48,12 +48,12 @@
         <h1 class="text-center">Icons</h1>
         <h6 class="text-center">Copier le code a coté de l'icône souhaitée</h6>
       </div>
-        <div class="box-body">
+      <div class="box-body">
         @foreach($icons as $icon)
           <div class="row align-items-center ml-5"><h1 class="d-inline-block mr-3"><i class="{{$icon->icon}}"></i></h1><h3 class="d-inline-block">{{$icon->icon}}</h3></div>
         @endforeach
         <div class="">
-          {{$icons->links()}}
+        {{$icons->links()}}
         </div>
       </div>
     </div>

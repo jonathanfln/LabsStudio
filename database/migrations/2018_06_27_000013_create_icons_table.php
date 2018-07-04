@@ -25,6 +25,8 @@ class CreateIconsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('icon', 45);
+            $table->softDeletes();
+            $table->nullableTimestamps();
         });
     }
 
