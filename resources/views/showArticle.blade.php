@@ -1,4 +1,4 @@
-@extends('components.blog')
+@extends('layouts.blog')
 
 @section('blog')
 <!-- page section -->
@@ -14,13 +14,13 @@
 	<div class="post-content">
 		<h2 class="post-title">{{$article->title}}</h2>
 		<div class="post-meta">
-			<a href="">{{$article->user->name}}</a>
-			<a href="">
+			<a>{{$article->user->name}}</a>
+			<a>
 				@foreach($article->tags as $tag)
 					{{$tag->name}}
 				@endforeach
 			</a>
-			<a href="">2 Comments</a>
+			<a>1 Comments</a>
 		</div>
 		<p>
 			{{$article->content}}
@@ -49,23 +49,14 @@
 	</div>
 	<!-- Post Comments -->
 	<div class="comments">
-		<h2>Comments (2)</h2>
+		<h2>Comments (1)</h2>
 		<ul class="comment-list">
 			<li>
 				<div class="avatar">
-					<img src="img/avatar/01.jpg" alt="">
+					<img src="{{asset('theme/img/avatar/01.jpg')}}" alt="">
 				</div>
 				<div class="commetn-text">
-					<h3>Michael Smith | 03 nov, 2017 | Reply</h3>
-					<p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique. </p>
-				</div>
-			</li>
-			<li>
-				<div class="avatar">
-					<img src="img/avatar/02.jpg" alt="">
-				</div>
-				<div class="commetn-text">
-					<h3>Michael Smith | 03 nov, 2017 | Reply</h3>
+					<h3>Michael Smith | 03 nov, 2017</h3>
 					<p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique. </p>
 				</div>
 			</li>
@@ -77,17 +68,29 @@
 			<h2>Leave a comment</h2>
 			<form class="form-class" action="{{route('comment')}}" method="post">
 				@csrf
-				<input type="hidden" value="{{$articles_id}}">
+				<input type="hidden" name="articles_id" value="{{$article->id}}">
 				<div class="row">
 					<div class="col-sm-6">
-						<input type="text" name="name" placeholder="Votre nom">
+						@if($errors->has('name'))
+							<div class="text-danger">{{$errors->first('name')}}</div>
+						@endif
+						<input type="text" name="name" placeholder="Votre nom" value="{{old('name')}}">
 					</div>
 					<div class="col-sm-6">
-						<input type="text" name="email" placeholder="Votre email">
+						@if($errors->has('email'))
+							<div class="text-danger">{{$errors->first('email')}}</div>
+						@endif
+						<input type="text" name="email" placeholder="Votre email" value="{{old('email')}}">
 					</div>
 					<div class="col-sm-12">
-						<input type="text" name="subject" placeholder="Sujet">
-						<textarea name="message" placeholder="Votre message"></textarea>
+						@if($errors->has('subject'))
+							<div class="text-danger">{{$errors->first('subject')}}</div>
+						@endif
+						<input type="text" name="subject" placeholder="Sujet" value="{{old('subject')}}">
+						@if($errors->has('message'))
+							<div class="text-danger">{{$errors->first('message')}}</div>
+						@endif
+						<textarea name="message" placeholder="Votre message">{{old('message')}}</textarea>
 						<button class="site-btn" type="submit">send</button>
 					</div>
 				</div>
@@ -95,5 +98,5 @@
 		</div>
 	</div>
 </div>
-	<!-- page section end-->
-	@endsection
+<!-- page section end-->
+@endsection

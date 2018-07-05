@@ -110,5 +110,8 @@
 		</div>
 	</div>
 </div>
+
+@include('components.newsletter')
+
 <!-- page section end-->
 @endsection

@@ -1,8 +1,8 @@
-@extends('components.blog')
+@extends('layouts.blog')
 
 @section('blog')
-<!-- Post item -->
 @foreach($articles as $article)
+<!-- Post item -->
 <div class="post-item">
 	<div class="post-thumbnail">
 		<img src="{{Storage::disk('imgArticle')->url($article->image)}}" alt="{{$article->name}}">

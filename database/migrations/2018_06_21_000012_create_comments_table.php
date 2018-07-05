@@ -24,8 +24,8 @@ class CreateCommentsTable extends Migration
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('name', 45)->nullable();
-            $table->string('email', 45)->nullable();
+            $table->string('name', 45);
+            $table->string('email', 45);
             $table->string('subject', 45);
             $table->text('message');
             $table->unsignedInteger('articles_id');

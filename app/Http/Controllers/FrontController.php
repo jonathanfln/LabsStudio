@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreContactMail;
+use App\Http\Requests\StoreComCreate;
 use App\Mail\ContactMail;
 use App\ImgCarousel;
 use App\Testimonial;
@@ -70,7 +71,7 @@ class FrontController extends Controller
         return view('home');
     }
     
-    public function comment(Request $request)
+    public function comment(StoreComCreate $request)
     {
         $comment = new Comment;
         $comment->name = $request->name;
