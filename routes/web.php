@@ -43,3 +43,5 @@ Route::resource('/admin/testimonials', 'TestimonialController');
 Route::resource('/admin/users', 'UserController');
 
 Route::resource('/admin/articles', 'ArticleController');
+
+Route::resource('/newsletter', 'NewsletterController');
