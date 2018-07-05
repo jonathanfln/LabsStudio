@@ -75,18 +75,20 @@
 	<div class="row">
 		<div class="col-md-9 comment-from">
 			<h2>Leave a comment</h2>
-			<form class="form-class">
+			<form class="form-class" action="{{route('comment')}}" method="post">
+				@csrf
+				<input type="hidden" value="{{$articles_id}}">
 				<div class="row">
 					<div class="col-sm-6">
-						<input type="text" name="name" placeholder="Your name">
+						<input type="text" name="name" placeholder="Votre nom">
 					</div>
 					<div class="col-sm-6">
-						<input type="text" name="email" placeholder="Your email">
+						<input type="text" name="email" placeholder="Votre email">
 					</div>
 					<div class="col-sm-12">
-						<input type="text" name="subject" placeholder="Subject">
-						<textarea name="message" placeholder="Message"></textarea>
-						<button class="site-btn">send</button>
+						<input type="text" name="subject" placeholder="Sujet">
+						<textarea name="message" placeholder="Votre message"></textarea>
+						<button class="site-btn" type="submit">send</button>
 					</div>
 				</div>
 			</form>

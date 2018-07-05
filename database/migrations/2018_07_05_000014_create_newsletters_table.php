@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCommentsTable extends Migration
+class CreateNewslettersTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $set_schema_table = 'comments';
+    public $set_schema_table = 'newsletters';
 
     /**
      * Run the migrations.
-     * @table comments
+     * @table newsletters
      *
      * @return void
      */
@@ -24,21 +24,9 @@ class CreateCommentsTable extends Migration
         Schema::create($this->set_schema_table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->string('name', 45)->nullable();
-            $table->string('email', 45)->nullable();
-            $table->string('subject', 45);
-            $table->text('message');
-            $table->unsignedInteger('articles_id');
-
-            $table->index(["articles_id"], 'fk_comments_articles1_idx');
+            $table->string('email', 45);
             $table->softDeletes();
             $table->nullableTimestamps();
-
-
-            $table->foreign('articles_id', 'fk_comments_articles1_idx')
-                ->references('id')->on('articles')
-                ->onDelete('no action')
-                ->onUpdate('no action');
         });
     }
 

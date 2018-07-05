@@ -21,6 +21,7 @@
 <div class="map" id="map-area"></div>
 
 @include('components.contact')
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0YyDTa0qqOjIerob2VTIwo_XVMhrruxo"></script>
 <script src="{{asset('theme/js/map.js')}}"></script>
 @endsection

@@ -15,7 +15,9 @@ Route::get('/', 'FrontController@welcome')->name('welcome');
 Route::get('/services', 'FrontController@services')->name('services');
 Route::get('/blog', 'FrontController@blog')->name('blog');
 Route::get('/blog{article}', 'FrontController@showBlog')->name('showBlog');
+Route::post('/comment', 'FrontController@comment')->name('comment');
 Route::get('/contact', 'FrontController@contact')->name('contact');
+Route::post('/contactMail', 'FrontController@contactMail')->name('contactMail');
 Route::get('/login', 'FrontController@login')->name('login');
 
 

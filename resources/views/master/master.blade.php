@@ -19,6 +19,7 @@
 	<link rel="stylesheet" href="{{asset('theme/css/magnific-popup.css')}}"/>
 	<link rel="stylesheet" href="{{asset('theme/css/owl.carousel.css')}}"/>
 	<link rel="stylesheet" href="{{asset('theme/css/style.css')}}"/>
+	{{-- <link rel="stylesheet" href="{{asset('css/app.css')}}"/> --}}
 
 welcome
 	<!--[if lt IE 9]>

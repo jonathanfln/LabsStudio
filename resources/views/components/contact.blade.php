@@ -17,18 +17,32 @@
 			</div>
 			<!-- contact form -->
 			<div class="col-md-6 col-pull">
-				<form class="form-class" id="con_form">
+				<form class="form-class" id="con_form" action="{{route('contactMail')}}" method="post">
+					@csrf
+					@method('POST')
 					<div class="row">
 						<div class="col-sm-6">
-							<input type="text" name="name" placeholder="Your name">
+							@if($errors->has('name'))
+								<div class="text-danger">{{$errors->first('name')}}</div>
+							@endif
+							<input type="text" name="name" placeholder="Votre nom" value="{{old('name')}}" class="">
 						</div>
 						<div class="col-sm-6">
-							<input type="text" name="email" placeholder="Your email">
+							@if($errors->has('email'))
+								<div class="text-danger">{{$errors->first('email')}}</div>
+							@endif
+							<input type="text" name="email" placeholder="Votre email" value="{{old('email')}}" class="">
 						</div>
 						<div class="col-sm-12">
-							<input type="text" name="subject" placeholder="Subject">
-							<textarea name="message" placeholder="Message"></textarea>
-							<button class="site-btn">send</button>
+							@if($errors->has('subject'))
+								<div class="text-danger">{{$errors->first('subject')}}</div>
+							@endif
+							<input type="text" name="subject" placeholder="Sujet" value="{{old('subject')}}" class="">
+							@if($errors->has('message'))
+								<div class="text-danger">{{$errors->first('message')}}</div>
+							@endif
+							<textarea name="message" placeholder="Message" class="">{{old('message')}}</textarea>
+							<button class="site-btn" type="submit">send</button>
 						</div>
 					</div>
 				</form>
