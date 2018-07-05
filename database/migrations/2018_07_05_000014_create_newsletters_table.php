@@ -25,6 +25,8 @@ class CreateNewslettersTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('email', 45);
+
+            $table->unique(["email"], 'email_UNIQUE');
             $table->softDeletes();
             $table->nullableTimestamps();
         });

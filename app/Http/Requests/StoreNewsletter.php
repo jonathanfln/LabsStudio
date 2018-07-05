@@ -24,7 +24,7 @@ class StoreNewsletter extends FormRequest
     public function rules()
     {
         return [
-            'newsletter' => 'required|email',
+            'newsletter' => 'required|email|unique:newsletters,email',
         ];
     }
 
@@ -38,6 +38,7 @@ class StoreNewsletter extends FormRequest
         return [
             'newsletter.required' => 'Champ requis',
             'newsletter.email' => 'Il faut que ce soit une adresse email',
+            'newsletter.unique' => 'Cette adresse est déjà utilisée',
         ];
     }
 }
