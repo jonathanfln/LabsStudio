@@ -20,7 +20,13 @@
 					{{$tag->name}}
 				@endforeach
 			</a>
-			<a>1 Comments</a>
+			<a>
+				@if($article->comments->count() == 1)
+				{{$article->comments->count()}} Comment
+				@else
+				{{$article->comments->count()}} Comments
+				@endif
+			</a>
 		</div>
 		<p>
 			{{$article->content}}
@@ -49,17 +55,21 @@
 	</div>
 	<!-- Post Comments -->
 	<div class="comments">
-		<h2>Comments (1)</h2>
+		<h2>Comments ({{$article->comments->count()}})</h2>
 		<ul class="comment-list">
+			@foreach($article->comments as $comment)
 			<li>
 				<div class="avatar">
 					<img src="{{asset('theme/img/avatar/01.jpg')}}" alt="">
 				</div>
 				<div class="commetn-text">
-					<h3>Michael Smith | 03 nov, 2017</h3>
-					<p>Vivamus in urna eu enim porttitor consequat. Proin vitae pulvinar libero. Proin ut hendrerit metus. Aliquam erat volutpat. Donec fermen tum convallis ante eget tristique. </p>
+					<h3>{{$comment->name}} | {{$comment->created_at->format('d M')}}, {{$comment->created_at->format('Y')}}</h3>
+					<p>
+						{{$comment->message}}
+					</p>
 				</div>
 			</li>
+			@endforeach
 		</ul>
 	</div>
 	<!-- Commert Form -->

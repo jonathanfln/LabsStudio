@@ -20,7 +20,13 @@
           {{$tag->name}}
 				@endforeach
 			</a>
-			<a></a>
+			<a>
+				@if($article->comments->count() == 1)
+				{{$article->comments->count()}} Comment
+				@else
+				{{$article->comments->count()}} Comments
+				@endif
+			</a>
 		</div>
 		<p>
 			{{$article->content}}
