@@ -52,7 +52,7 @@ class FrontController extends Controller
     
     public function blog()
     {
-        $articles = Article::orderBy('created_at','DESC')->paginate(3);
+        $articles = Article::where('validation', 1)->orderBy('created_at','DESC')->paginate(3);
         return view('indexArticle', compact('testimonialRand', 'categories', 'tags', 'articles'));
     }
 
@@ -79,6 +79,7 @@ class FrontController extends Controller
         $comment->subject = $request->subject;
         $comment->message = $request->message;
         $comment->articles_id = $request->articles_id;
+        $comment->validation = 2;
         $comment->save();
         return redirect()->back();
     }

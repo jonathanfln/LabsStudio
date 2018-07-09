@@ -17,6 +17,6 @@ class Comment extends Model
 
     public function article()
     {
-        return $this->belingsTo('App\Article', 'article_id', 'id');
+        return $this->belongsTo('App\Article', 'articles_id', 'id');
     }
 }

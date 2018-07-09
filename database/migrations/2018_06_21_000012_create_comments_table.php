@@ -29,6 +29,7 @@ class CreateCommentsTable extends Migration
             $table->string('subject', 45);
             $table->text('message');
             $table->unsignedInteger('articles_id');
+            $table->unsignedInteger('validation');
 
             $table->index(["articles_id"], 'fk_comments_articles1_idx');
             $table->softDeletes();

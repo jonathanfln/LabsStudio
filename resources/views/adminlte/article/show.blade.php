@@ -16,6 +16,15 @@
         <img src="{{Storage::disk('imgArticle')->url($article->image)}}" alt="{{$article->title}}">
       </div>
       @endif
+      <div class="text-center">
+        @if($article->validation == 2)
+          <span class="badge badge-warning text-white">En suspend</span>
+        @elseif($article->validation == 1)
+          <span class="badge badge-success">Approuvé</span>
+        @elseif($article->validation == 3)
+          <span class="badge badge-danger">Refusé</span>
+        @endif
+      </div>
       <div class="box-body text-center">
         <h1 class="d-inline-block">{{$article->title}}</h1>
         @if($article->user != NULL)

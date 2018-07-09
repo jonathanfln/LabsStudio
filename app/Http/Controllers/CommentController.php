@@ -15,7 +15,9 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $comments = Comment::all()->sortByDesc('created_at');
+        // dd($comments[0]->article);
+        return view('adminlte.commentaire.index', compact('comments'));
     }
 
     /**
@@ -34,19 +36,9 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreComCreate $request)
+    public function store(Request $request)
     {
-        dd($request->name);
-        $comment = new Comment;
-        $comment->name = $request->name;
-        $comment->email = $request->email;
-        $comment->subject = $request->subject;
-        $comment->message = $request->message;
-        $comment->articles_id = $request->articles_id;
-        if($comment->save())
-        {
-            return redirect()->back();
-        }
+        //
     }
 
     /**
@@ -55,9 +47,9 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Comment $comment)
     {
-        //
+        return view('adminlte.commentaire.show', compact('comment'));
     }
 
     /**
@@ -78,9 +70,11 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comment $comment)
     {
-        //
+        $comment->validation = $request->validation;
+        $comment->save();
+        return redirect()->route('comments.index');
     }
 
     /**

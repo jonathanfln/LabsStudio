@@ -45,3 +45,5 @@ Route::resource('/admin/users', 'UserController');
 Route::resource('/admin/articles', 'ArticleController');
 
 Route::resource('/newsletter', 'NewsletterController');
+
+Route::resource('/admin/comments', 'CommentController');

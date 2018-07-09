@@ -134,7 +134,7 @@ return [
         [
             'text'        => 'Clients',
             'url'         => 'admin/clients',
-            'icon'        => 'users',
+            'icon'        => 'group',
         ],
         [
             'text'        => 'Catégories',
@@ -144,7 +144,7 @@ return [
         [
             'text'        => 'Testimonials',
             'url'         => 'admin/testimonials',
-            'icon'        => 'file',
+            'icon'        => 'file-text',
         ],
         [
             'text'        => 'Projets',
@@ -165,6 +165,11 @@ return [
             'text'        => 'Articles',
             'url'         => 'admin/articles',
             'icon'        => 'tag',
+        ],
+        [
+            'text'        => 'Commentaires',
+            'url'         => 'admin/comments',
+            'icon'        => 'commenting',
         ],
         'ACCOUNT SETTINGS',
         [

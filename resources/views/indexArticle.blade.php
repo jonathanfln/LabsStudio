@@ -22,9 +22,9 @@
 			</a>
 			<a>
 				@if($article->comments->count() == 1)
-				{{$article->comments->count()}} Comment
+				{{$article->comments->where('validation', 1)->count()}} Comment
 				@else
-				{{$article->comments->count()}} Comments
+				{{$article->comments->where('validation', 1)->count()}} Comments
 				@endif
 			</a>
 		</div>

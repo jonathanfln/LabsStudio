@@ -29,6 +29,7 @@ class CreateArticlesTable extends Migration
             $table->unsignedInteger('users_id');
             $table->string('image', 45)->nullable();
             $table->unsignedInteger('categories_id')->nullable();
+            $table->unsignedInteger('validation');
 
             $table->index(["categories_id"], 'fk_articles_categories1_idx');
 

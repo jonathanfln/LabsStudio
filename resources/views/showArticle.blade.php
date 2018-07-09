@@ -22,21 +22,14 @@
 			</a>
 			<a>
 				@if($article->comments->count() == 1)
-				{{$article->comments->count()}} Comment
+				{{$article->comments->where('validation', 1)->count()}} Comment
 				@else
-				{{$article->comments->count()}} Comments
+				{{$article->comments->where('validation', 1)->count()}} Comments
 				@endif
 			</a>
 		</div>
 		<p>
 			{{$article->content}}
-		</p>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum, quam tincidunt venenatis ultrices, est libero mattis ante, ac consectetur diam neque eget quam. Etiam feugiat augue et varius blandit. Praesent mattis, eros a sodales commodo, justo ipsum rutrum mauris, sit amet egestas metus quam sed dolor. Sed consectetur, dui sed sollicitudin eleifend, arcu neque egestas lectus, sagittis viverra justo massa ut sapien. Aenean viverra ornare mauris eget lobortis. Cras vulputate elementum magna, tincidunt pharetra erat condimentum sit amet. Maecenas vitae ligula pretium, convallis magna eu, ultricies quam. In hac habitasse platea dictumst.
-
-		</p>
-		<p>
-			Fusce vel tempus nunc. Phasellus et risus eget sapien suscipit efficitur. Suspendisse iaculis purus ornare urna egestas imperdiet. Nulla congue consectetur placerat. Integer sit amet auctor justo. Pellentesque vel congue velit. Sed ullamcorper lacus scelerisque condimentum convallis. Sed ac mollis sem.
 		</p>
 	</div>
 	<!-- Post Author -->
@@ -55,9 +48,10 @@
 	</div>
 	<!-- Post Comments -->
 	<div class="comments">
-		<h2>Comments ({{$article->comments->count()}})</h2>
+		<h2>Comments ({{$article->comments->where('validation', 1)->count()}})</h2>
 		<ul class="comment-list">
 			@foreach($article->comments as $comment)
+			@if($comment->validation == 1)
 			<li>
 				<div class="avatar">
 					<img src="{{asset('theme/img/avatar/01.jpg')}}" alt="">
@@ -69,9 +63,11 @@
 					</p>
 				</div>
 			</li>
+			@endif
 			@endforeach
 		</ul>
 	</div>
+
 	<!-- Commert Form -->
 	<div class="row">
 		<div class="col-md-9 comment-from">
@@ -107,6 +103,7 @@
 			</form>
 		</div>
 	</div>
+	{{-- End Comment Form --}}
 </div>
 <!-- page section end-->
 @endsection

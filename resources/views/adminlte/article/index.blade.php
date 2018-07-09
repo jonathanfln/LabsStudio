@@ -17,6 +17,15 @@
         <div class="card mx-auto" style="width: 18rem;">
             <a href="{{route('articles.show', ['article'=>$article->id])}}" class="">
                 <img class="card-img-top" src="{{Storage::disk('imgArticle')->url($article->image)}}" alt="{{$article->name}}">
+                <div class="text-center">
+                    @if($article->validation == 2)
+                        <span class="badge badge-warning text-white">En suspend</span>
+                    @elseif($article->validation == 1)
+                        <span class="badge badge-success">Approuvé</span>
+                    @elseif($article->validation == 3)
+                        <span class="badge badge-danger">Refusé</span>
+                    @endif
+                </div>
                 <div class="card-body text-dark">
                     <h3>{{$article->title}}</h3>
                     {{-- <p>{{$article->content}}</p> --}}

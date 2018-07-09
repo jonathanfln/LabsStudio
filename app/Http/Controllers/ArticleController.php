@@ -58,6 +58,7 @@ class ArticleController extends Controller
         // dd(Auth::user()->id);
         $article->users_id = Auth::user()->id;
         $article->categories_id = $request->categories_id;
+        $article->validation = 2;
         if($request->image != NULL)
         {
             // $article->image = $request->image->store('', 'imgArticle');
