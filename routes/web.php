@@ -47,3 +47,5 @@ Route::resource('/admin/articles', 'ArticleController');
 Route::resource('/newsletter', 'NewsletterController');
 
 Route::resource('/admin/comments', 'CommentController');
+
+Route::resource('/admin/validation', 'ValidArtController');

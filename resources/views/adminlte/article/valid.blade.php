@@ -6,7 +6,7 @@
 @stop
 
 @section('content')
-<a href="{{route('articles.index')}}" class="btn btn-info">Retour</a>
+<a href="{{route('articles.show', ['article'=>$article->id])}}" class="btn btn-info">Retour</a>
 <hr>
 <div class="row">
   <div class="col-md-10">
@@ -50,24 +50,31 @@
       <div class="box-body">
         <p>{{$article->content}}</p>
       </div>
-      <div class="box-body"></div>
     </div>
-  </div>
-  <div class="col-md-2">
-    <div class="box">
-      <div class="box-header">
-        <h2 class="text-center">Actions</h2>
+    {{-- @can() --}}
+      <div class="box">
+        <div class="box-body text-center">
+          <form action="{{route('validation.update', ['article'=>$article->id])}}" class="d-inline-block" method="POST">
+            @csrf
+            @method('PUT')
+            <input type="hidden" value="1" name="validation">
+            <button class="btn btn-success" type="submit">Valider</button>
+          </form>
+          <form action="{{route('validation.update', ['article'=>$article->id])}}" class="d-inline-block" method="POST">
+            @csrf
+            @method('PUT')
+            <input type="hidden" value="2" name="validation">
+            <button class="btn btn-warning" type="submit">En suspend</button>
+          </form>
+          <form action="{{route('validation.update', ['article'=>$article->id])}}" class="d-inline-block"  method="POST">
+            @csrf
+            @method('PUT')
+            <input type="hidden" value="3" name="validation">
+            <button class="btn btn-danger" type="submit">Refuser</button>
+          </form>
+        </div>
       </div>
-      <div class="box-body text-center">
-        <a href="{{route('articles.edit', ['article'=>$article->id])}}" class="btn btn-info text-white m-1 w-50">Éditer</a>
-        <form action="{{route('articles.destroy', ['article'=>$article->id])}}" method="post" class="">
-          @csrf
-          @method('DELETE')
-          <button class="btn btn-danger m-1 w-50">Supprimer</button>
-        </form>
-        <a href="{{route('validation.show', ['validation'=>$article->id])}}" class="btn btn-success w-50 m-1">Validation</a>
-      </div>
-    </div>
+    {{-- @endcan --}}
   </div>
 </div>
 @stop

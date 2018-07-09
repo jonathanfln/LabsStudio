@@ -92,10 +92,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        $user = User::all();
-        $tags = Tag::all();
-        $category = Category::all();
-        return view('adminlte.article.show', compact('article', 'user', 'tags', 'category'));
+        return view('adminlte.article.show', compact('article'));
     }
 
     /**
