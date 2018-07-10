@@ -30,8 +30,9 @@
 			<div class="col-md-4 col-sm-5 sidebar">
 				<!-- Single widget -->
 				<div class="widget-item">
-					<form action="" class="search-form">
-						<input type="text" placeholder="Search">
+					<form action="{{route('research')}}" class="search-form" method="get">
+						@csrf
+						<input name="title" type="text" placeholder="Search">
 						<button class="search-btn" type="submit">
 							<i class="flaticon-026-search"></i>
 						</button>

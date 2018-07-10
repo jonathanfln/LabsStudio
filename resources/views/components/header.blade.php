@@ -16,7 +16,7 @@
 				<li class="{{Route::is('services')?'active':''}}">
 					<a href="{{route('services')}}">Services</a>
 				</li>
-				<li class="{{Route::is('blog')?'active':''}}">
+				<li class="{{Route::is('blog')?'active':'' || Route::is('tags') || Route::is('categories') ? 'active' : ''}} ">
 					<a href="{{route('blog')}}">Blog</a>
 				</li>
 				<li class="{{Route::is('contact')?'active':''}}">

@@ -18,7 +18,7 @@ Route::get('/blog{article}', 'FrontController@showBlog')->name('showBlog');
 Route::post('/comment', 'FrontController@comment')->name('comment');
 Route::get('/blog/categories/{category}', 'FrontController@categories')->name('categories');
 Route::get('/blog/tags/{tag}', 'FrontController@tags')->name('tags');
-Route::get('/blog/research/{tag}', 'FrontController@tags')->name('tags');
+Route::get('/blog/research', 'FrontController@research')->name('research');
 Route::get('/contact', 'FrontController@contact')->name('contact');
 Route::post('/contactMail', 'FrontController@contactMail')->name('contactMail');
 Route::get('/login', 'FrontController@login')->name('login');
