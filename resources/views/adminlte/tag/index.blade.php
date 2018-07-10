@@ -11,7 +11,7 @@
   <a href="{{route('tags.create')}}" class="btn btn-success float-right">Ajouter un nouveau tag</a>
 </div>
 <hr>
-<table class="table table-light w-50">
+<table class="table table-light w-75">
   <thead>
     <tr class="row mx-0">
       <th class="col-md-1">#</th>
@@ -26,7 +26,7 @@
         <td class="col-md-8">{{$tag->name}}</td>
         <td class="col-md-3">
           <a href="{{route('tags.edit',['tag'=>$tag->id])}}" class="btn btn-warning">Éditer</a>
-          <form action="{{route('tags.destroy', ['tag'=>$tag->id])}}" class="d-inline-block" method="post">
+          <form action="{{route('tags.destroy', ['tag'=>$tag->id])}}" class="d-inline-block ml-3" method="post">
             @csrf
             @method('DELETE')
             <button class="btn btn-danger">Supprimer</button>

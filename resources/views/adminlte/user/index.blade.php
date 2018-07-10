@@ -18,8 +18,8 @@
       {{-- <img class="card-img-top" src="{{Storage::disk('imgClient')->url($user->image)}}" alt="{{$user->name}}"> --}}
       <a href="{{route('users.show', ['user'=>$user->id])}}" class="text-dark">
       <div class="card-body text-center">
-        <img src="{{Storage::disk('imgUser')->url ($user->image)}}" alt="{{$user->name}}" class="rounded-circle img-fluid" width="25%">
-        <div class="d-inline-block">
+        <img src="{{Storage::disk('imgUser')->url ($user->image)}}" alt="{{$user->name}}" class="img-fluid" width="25%">
+        <div class="d-inline-block ml-4">
           <h4>{{$user->name}}</h4>
           <h6>{{$user->job}}</h6>
         </div>

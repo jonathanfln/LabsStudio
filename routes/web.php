@@ -16,6 +16,9 @@ Route::get('/services', 'FrontController@services')->name('services');
 Route::get('/blog', 'FrontController@blog')->name('blog');
 Route::get('/blog{article}', 'FrontController@showBlog')->name('showBlog');
 Route::post('/comment', 'FrontController@comment')->name('comment');
+Route::get('/blog/categories/{category}', 'FrontController@categories')->name('categories');
+Route::get('/blog/tags/{tag}', 'FrontController@tags')->name('tags');
+Route::get('/blog/research/{tag}', 'FrontController@tags')->name('tags');
 Route::get('/contact', 'FrontController@contact')->name('contact');
 Route::post('/contactMail', 'FrontController@contactMail')->name('contactMail');
 Route::get('/login', 'FrontController@login')->name('login');
@@ -26,26 +29,26 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/admin/carousel', 'ImgCarouselController');
+Route::resource('/admin/carousel', 'ImgCarouselController')->middleware('can:admin');
 
-Route::resource('/admin/categories', 'CategoryController');
+Route::resource('/admin/categories', 'CategoryController')->middleware('can:admin');
 
-Route::resource('/admin/services', 'ServiceController');
+Route::resource('/admin/services', 'ServiceController')->middleware('can:admin');
 
-Route::resource('/admin/clients', 'ClientController');
+Route::resource('/admin/clients', 'ClientController')->middleware('can:admin');
 
-Route::resource('/admin/projets', 'ProjetController');
+Route::resource('/admin/projets', 'ProjetController')->middleware('can:admin');
 
-Route::resource('/admin/tags', 'TagController');
+Route::resource('/admin/tags', 'TagController')->middleware('can:admin');
 
-Route::resource('/admin/testimonials', 'TestimonialController');
+Route::resource('/admin/testimonials', 'TestimonialController')->middleware('can:admin');
 
-Route::resource('/admin/users', 'UserController');
+Route::resource('/admin/users', 'UserController')->middleware('can:admin');
 
-Route::resource('/admin/articles', 'ArticleController');
+Route::resource('/admin/articles', 'ArticleController')->middleware('auth');
 
-Route::resource('/newsletter', 'NewsletterController');
+Route::resource('/newsletter', 'NewsletterController')->middleware('can:admin');
 
-Route::resource('/admin/comments', 'CommentController');
+Route::resource('/admin/comments', 'CommentController')->middleware('auth');
 
-Route::resource('/admin/validation', 'ValidArtController');
+Route::resource('/admin/validation', 'ValidArtController')->middleware('can:admin');

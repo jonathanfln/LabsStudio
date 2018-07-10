@@ -22,20 +22,23 @@ use View;
 class FrontController extends Controller
 {
     public function __construct(){
+        $articles = Article::where('validation', 1)->orderBy('created_at','DESC')->paginate(3);
+        $testimonialRand = Testimonial::orderByRaw('RAND()')->take(1)->get();
+        $services = Service::orderBy('created_at','DESC')->paginate(9);
         $categories = Category::all();
         $tags = Tag::all();
-        $testimonialRand = Testimonial::orderByRaw('RAND()')->take(1)->get();
 
-        View::share('categories', $categories);
-        View::share('tags', $tags);
         View::share('testimonialRand', $testimonialRand);
+        View::share('categories', $categories);
+        view::share('articles', $articles);
+        view::share('services', $services);
+        View::share('tags', $tags);
 
     }
     public function welcome()
     {
         $carouselImgs = ImgCarousel::all();
         $servicesRand = Service::orderByRaw('RAND()')->take(3)->get();
-        $services = Service::orderBy('created_at','DESC')->paginate(9);
         $testimonials = Testimonial::with('client')->get()->sortByDesc('created_at')->take(6);
         $team = User::all();
         return view('welcome',compact('carouselImgs','servicesRand','services','testimonials','team'));
@@ -44,7 +47,6 @@ class FrontController extends Controller
     public function services()
     {
         $projets = Projet::orderBy('created_at','DESC')->paginate(3);
-        $services = Service::orderBy('created_at','DESC')->paginate(9);
         $services1Rand = Service::orderByRaw('RAND()')->take(3)->get();
         $services2Rand = Service::orderByRaw('RAND()')->take(3)->get();
         return view('services', compact('projets','services','services1Rand','services2Rand'));
@@ -52,13 +54,24 @@ class FrontController extends Controller
     
     public function blog()
     {
-        $articles = Article::where('validation', 1)->orderBy('created_at','DESC')->paginate(3);
-        return view('indexArticle', compact('testimonialRand', 'categories', 'tags', 'articles'));
+        return view('indexArticle', compact('testimonialRand', 'articles'));
     }
 
     public function showBlog(Article $article)
     {
         return view('showArticle', compact('article'));
+    }
+
+    public function categories($id)
+    {
+        $articles = Article::where('validation', 1)->where('categories_id', $id)->orderBy('created_at','DESC')->paginate(3);
+        return view('research', compact('articles'));
+    }
+
+    public function tags($id)
+    {
+        $articles = Tag::find($id)->articles()->where('validation', 1)->where('tags_id', $id)->orderBy('created_at','DESC')->paginate(3);
+        return view('research', compact('articles'));
     }
     
     public function contact()

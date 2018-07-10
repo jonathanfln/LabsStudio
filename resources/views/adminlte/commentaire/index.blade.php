@@ -9,18 +9,18 @@
 @section('content')
 <div>
   <h5>Commentaires en attente de validation</h5>
-  <table class="table table-light ">
+  <table class="table table-light w-75">
     <thead>
       <tr class="row mx-0">
-        <th class="col-md-1">#</th>
-        <th class="col-md-8">Titre de l'article</th>
-        <th class="col-md-3">Action</th>
+        <th class="col-md-2">#</th>
+        <th class="col-md-9">Titre de l'article</th>
+        <th class="col-md-1">Action</th>
       </tr>
     </thead>
     <tbody>
       @foreach($comments as $comment)
         <tr class="row mx-0">
-          <td scope="row" class="col-md-1">
+          <td scope="row" class="col-md-2">
             {{$loop->iteration}}
             @if($comment->validation == 2)
             <span class="badge badge-warning text-white ml-4">En suspend</span>
@@ -30,8 +30,8 @@
             <span class="badge badge-danger ml-4">Refusé</span>
             @endif
           </td>
-          <td class="col-md-8">{{$comment->article->title}}</td>
-          <td class="col-md-3">
+          <td class="col-md-9">{{$comment->article->title}}</td>
+          <td class="col-md-1">
             <a href="{{route('comments.show',['comment'=>$comment->id])}}" class="btn btn-info">Voir</a>
           </td>
         </tr>

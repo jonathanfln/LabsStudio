@@ -32,7 +32,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'simon@gmail.com',
             'password' => bcrypt('azerty'),
             'image' => 'h61fdhE7TykJdc8BVjKUwAPl7Bt4MD7DFGvQftQ0.jpeg',
-            'roles_id' => 1,
+            'roles_id' => 2,
             'job' => 'Dev WordPress',
         ]);
     }

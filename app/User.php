@@ -43,4 +43,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Comment', 'users_id', 'id');
     }
+
+    public function admin()
+    {
+        return Auth::user()->role->slug == "admin";
+    }
+
+    public function editor()
+    {
+        return Auth::user()->role->slug == "editor";
+    }
 }

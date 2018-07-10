@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Auth;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,6 +26,13 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::Define('isOwner', function($user, $post){
+            // dd($post);
+            return Auth::user()->id == $post->users_id;
+        });
+
+        Gate::Define('admin', function(){
+            return Auth::user()->role->slug == 'admin';
+        });
     }
 }

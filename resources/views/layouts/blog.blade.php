@@ -30,9 +30,9 @@
 			<div class="col-md-4 col-sm-5 sidebar">
 				<!-- Single widget -->
 				<div class="widget-item">
-					<form action="#" class="search-form">
+					<form action="" class="search-form">
 						<input type="text" placeholder="Search">
-						<button class="search-btn">
+						<button class="search-btn" type="submit">
 							<i class="flaticon-026-search"></i>
 						</button>
 					</form>
@@ -43,7 +43,7 @@
 					<ul>
 						@foreach($categories as $category)
 							<li>
-								<a href="#">{{$category->name}}</a>
+								<a href="{{route('categories', ['category'=>$category->id])}}">{{$category->name}}</a>
 							</li>
 						@endforeach
 					</ul>
@@ -78,31 +78,33 @@
 					<ul class="tag">
 						@foreach($tags as $tag)
 						<li>
-							<a href="">{{$tag->name}}</a>
+							<a href="{{route('tags', ['tag'=>$tag->id])}}">{{$tag->name}}</a>
 						</li>
 						@endforeach
 					</ul>
 				</div>
 				@foreach($testimonialRand as $testimonial)
 				<!-- Single widget -->
-				<div class="widget-item">
-					<h2 class="widget-title">Quote</h2>
-					<div class="testimonial">
-						<span>‘​‌‘​‌</span>
-						<p class="">
-							{{$testimonial->content}}
-						</p>
-						@if($testimonial->client != NULL)
-						<div class="client-info">
-							<div class="avatar">
-								<img src="{{Storage::disk('imgClient')->url($testimonial->client->image)}}" alt="{{$testimonial->client->name}}">
+				<div style="background-color:coral">
+					<div class="widget-item">
+						<h2 class="widget-title">Quote</h2>
+						<div class="testimonial">
+							<span>‘​‌‘​‌</span>
+							<p class="">
+								{{$testimonial->content}}
+							</p>
+							@if($testimonial->client != NULL)
+							<div class="client-info">
+								<div class="avatar">
+									<img src="{{Storage::disk('imgClient')->url($testimonial->client->image)}}" alt="{{$testimonial->client->name}}">
+								</div>
+								<div class="client-name">
+									<h2 class="">{{$testimonial->client->name}}</h2>
+									<p>{{$testimonial->client->company}}</p>
+								</div>
 							</div>
-							<div class="client-name">
-								<h2 class="">{{$testimonial->client->name}}</h2>
-								<p>{{$testimonial->client->company}}</p>
-							</div>
+							@endif
 						</div>
-						@endif
 					</div>
 				</div>
 				@endforeach

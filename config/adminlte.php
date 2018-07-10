@@ -125,114 +125,63 @@ return [
             'text'        => 'Carousel',
             'url'         => 'admin/carousel',
             'icon'        => 'image',
-        ],
-        [
-            'text'        => 'Services',
-            'url'         => 'admin/services',
-            'icon'        => 'file',
+            'can'         => 'admin',
         ],
         [
             'text'        => 'Clients',
             'url'         => 'admin/clients',
             'icon'        => 'group',
-        ],
-        [
-            'text'        => 'Catégories',
-            'url'         => 'admin/categories',
-            'icon'        => 'file',
+            'can'         => 'admin',
         ],
         [
             'text'        => 'Testimonials',
             'url'         => 'admin/testimonials',
             'icon'        => 'file-text',
+            'can'         => 'admin',
+        ],
+        [
+            'text'        => 'Services',
+            'url'         => 'admin/services',
+            'icon'        => 'file',
+            'can'         => 'admin',
         ],
         [
             'text'        => 'Projets',
             'url'         => 'admin/projets',
             'icon'        => 'file',
+            'can'         => 'admin',
         ],
         [
             'text'        => 'Users',
             'url'         => 'admin/users',
             'icon'        => 'user',
+            'can'         => 'admin',
+        ],
+        [
+            'text'        => 'Catégories',
+            'url'         => 'admin/categories',
+            'icon'        => 'file',
+            'can'         => 'admin',
         ],
         [
             'text'        => 'Tags',
             'url'         => 'admin/tags',
             'icon'        => 'tag',
+            'can'         => 'admin',
         ],
-        [
-            'text'        => 'Articles',
-            'url'         => 'admin/articles',
-            'icon'        => 'tag',
-        ],
-        [
-            'text'        => 'Commentaires',
-            'url'         => 'admin/comments',
-            'icon'        => 'commenting',
-        ],
-        'ACCOUNT SETTINGS',
-        [
-            'text' => 'Profile',
-            'url'  => 'admin/settings',
-            'icon' => 'user',
-        ],
-        [
-            'text' => 'Change Password',
-            'url'  => 'admin/settings',
-            'icon' => 'lock',
-        ],
-        [
-            'text'    => 'Multilevel',
-            'icon'    => 'share',
-            'submenu' => [
-                [
-                    'text' => 'Level One',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'Level One',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'Level Two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'Level Two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'Level One',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        'LABELS',
-        [
-            'text'       => 'Important',
-            'icon_color' => 'red',
-        ],
-        [
-            'text'       => 'Warning',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text'       => 'Information',
-            'icon_color' => 'aqua',
-        ],
+        // [
+        //     'text'        => 'Articles',
+        //     'url'         => 'admin/articles',
+        //     'icon'        => 'tag',
+        //     // 'can'         => 'editor',
+        // ],
+        // [
+        //     'text'        => 'Commentaires',
+        //     'url'         => 'admin/comments',
+        //     'icon'        => 'commenting',
+        //     // 'can'         => 'editor',
+        // ],
+       
     ],
 
     /*

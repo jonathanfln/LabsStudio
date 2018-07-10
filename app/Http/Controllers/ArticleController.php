@@ -121,6 +121,7 @@ class ArticleController extends Controller
         $article->content = $request->content;
         // dd(Auth::user()->id);
         $article->categories_id = $request->categories_id;
+        $article->validation = 2;
         if($request->image != NULL)
         {
             if(Storage::disk('imgArticle')->exists($article->image))

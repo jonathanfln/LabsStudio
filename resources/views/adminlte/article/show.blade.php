@@ -59,13 +59,17 @@
         <h2 class="text-center">Actions</h2>
       </div>
       <div class="box-body text-center">
+        @can('isOwner', $article)
         <a href="{{route('articles.edit', ['article'=>$article->id])}}" class="btn btn-info text-white m-1 w-50">Éditer</a>
         <form action="{{route('articles.destroy', ['article'=>$article->id])}}" method="post" class="">
           @csrf
           @method('DELETE')
           <button class="btn btn-danger m-1 w-50">Supprimer</button>
         </form>
+        @endcan
+        @can('admin')
         <a href="{{route('validation.show', ['validation'=>$article->id])}}" class="btn btn-success w-50 m-1">Validation</a>
+        @endcan
       </div>
     </div>
   </div>
