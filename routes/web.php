@@ -29,26 +29,32 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/admin/carousel', 'ImgCarouselController')->middleware('can:admin');
+Route::group(['middleware' => ['auth']], function()
+{
+  Route::resource('/admin/articles', 'ArticleController');
 
-Route::resource('/admin/categories', 'CategoryController')->middleware('can:admin');
+  Route::resource('/admin/comments', 'CommentController');
+});
 
-Route::resource('/admin/services', 'ServiceController')->middleware('can:admin');
+Route::group(['middleware' => ['can:admin']], function()
+{
+  Route::resource('/admin/carousel', 'ImgCarouselController');
 
-Route::resource('/admin/clients', 'ClientController')->middleware('can:admin');
+  Route::resource('/admin/categories', 'CategoryController');
 
-Route::resource('/admin/projets', 'ProjetController')->middleware('can:admin');
+  Route::resource('/admin/services', 'ServiceController');
 
-Route::resource('/admin/tags', 'TagController')->middleware('can:admin');
+  Route::resource('/admin/clients', 'ClientController');
 
-Route::resource('/admin/testimonials', 'TestimonialController')->middleware('can:admin');
+  Route::resource('/admin/projets', 'ProjetController');
 
-Route::resource('/admin/users', 'UserController')->middleware('can:admin');
+  Route::resource('/admin/tags', 'TagController');
 
-Route::resource('/admin/articles', 'ArticleController')->middleware('auth');
+  Route::resource('/admin/testimonials', 'TestimonialController');
 
-Route::resource('/newsletter', 'NewsletterController')->middleware('can:admin');
+  Route::resource('/admin/users', 'UserController');
 
-Route::resource('/admin/comments', 'CommentController')->middleware('auth');
+  Route::resource('/newsletter', 'NewsletterController');
 
-Route::resource('/admin/validation', 'ValidArtController')->middleware('can:admin');
+  Route::resource('/admin/validation', 'ValidArtController');
+});
