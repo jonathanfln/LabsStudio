@@ -65,19 +65,19 @@ class FrontController extends Controller
     public function categories($id)
     {
         $articles = Article::where('validation', 1)->where('categories_id', $id)->orderBy('created_at','DESC')->paginate(3);
-        return view('research', compact('articles'));
+        return view('indexArticle', compact('articles'));
     }
 
     public function tags($id)
     {
         $articles = Tag::find($id)->articles()->where('validation', 1)->where('tags_id', $id)->orderBy('created_at','DESC')->paginate(3);
-        return view('research', compact('articles'));
+        return view('indexArticle', compact('articles'));
     }
 
     public function research(Request $request)
     {
         $articles = Article::where('title', 'LIKE', '%'.$request->title.'%')->paginate(3); 
-        return view('research', compact('articles'));
+        return view('indexArticle', compact('articles'));
     }
     
     public function contact()

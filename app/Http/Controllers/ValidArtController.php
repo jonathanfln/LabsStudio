@@ -46,8 +46,7 @@ class ValidArtController extends Controller
      */
     public function show($id)
     {
-        $article = Article::find($id);
-        return view('adminlte.article.valid', compact('article'));
+        //
     }
 
     /**

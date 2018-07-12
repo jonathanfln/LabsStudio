@@ -22,12 +22,16 @@
       </div>
       @endforeach
     </div>
+    @if(Route::is('services'))
     <div>
       {{$services->links('components.pagination')}}
     </div>
+    @endif
+    @if(Route::is('welcome'))
     <div class="text-center">
-      <a href="" class="site-btn">Browse</a>
+      <a href="{{route('services')}}#services" class="site-btn">Browse</a>
     </div>
+    @endif
   </div>
 </div>
 <!-- services section end -->

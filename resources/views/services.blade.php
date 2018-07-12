@@ -15,8 +15,9 @@
   </div>
 </div>
 <!-- Page header end-->
-
-@include('components.services', $services)
+<div id="services">
+  @include('components.services', $services)
+</div>
 
 <!-- features section -->
 <div class="team-section spad">
@@ -62,7 +63,7 @@
       </div>
     </div>
     <div class="text-center mt100">
-      <a href="" class="site-btn">Browse</a>
+      <a href="#projets" class="site-btn">Browse</a>
     </div>
   </div>
 </div>
@@ -70,7 +71,7 @@
 
 
 <!-- services card section-->
-<div class="services-card-section spad">
+<div class="services-card-section spad" id="projets">
   <div class="container">
     <div class="row">
       <!-- Single Card -->

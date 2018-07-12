@@ -21,7 +21,7 @@
 				@endforeach
 			</a>
 			<a>
-				@if($article->comments->count() == 1)
+				@if($article->comments->where('validation', 1)->count() == 1)
 				{{$article->comments->where('validation', 1)->count()}} Comment
 				@else
 				{{$article->comments->where('validation', 1)->count()}} Comments

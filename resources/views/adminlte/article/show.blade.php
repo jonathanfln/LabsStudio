@@ -67,11 +67,38 @@
           <button class="btn btn-danger m-1 w-50">Supprimer</button>
         </form>
         @endcan
-        @can('admin')
-        <a href="{{route('validation.show', ['validation'=>$article->id])}}" class="btn btn-success w-50 m-1">Validation</a>
-        @endcan
       </div>
     </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-10">
+    {{-- @can() --}}
+    @can('admin')
+    <div class="box">
+      <div class="box-body text-center">
+        <form action="{{route('validation.update', ['article'=>$article->id])}}" class="d-inline-block" method="POST">
+          @csrf
+          @method('PUT')
+          <input type="hidden" value="1" name="validation">
+          <button class="btn btn-success" type="submit">Valider</button>
+        </form>
+        <form action="{{route('validation.update', ['article'=>$article->id])}}" class="d-inline-block" method="POST">
+          @csrf
+          @method('PUT')
+          <input type="hidden" value="2" name="validation">
+          <button class="btn btn-warning mx-3" type="submit">En suspend</button>
+        </form>
+        <form action="{{route('validation.update', ['article'=>$article->id])}}" class="d-inline-block"  method="POST">
+          @csrf
+          @method('PUT')
+          <input type="hidden" value="3" name="validation">
+          <button class="btn btn-danger" type="submit">Refuser</button>
+        </form>
+      </div>
+    </div>
+    @endcan
+    {{-- @endcan --}}
   </div>
 </div>
 @stop
